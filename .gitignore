@@ -1,0 +1,16 @@
+#Config
+deploy.properties
+build.xml
+
+#Build dir
+.build/
+
+#Release files
+vivo-rel-1.5.1
+vitro-data
+vivo-rel-1.5.1.zip
+
+#Eclipse
+.classpath
+.project
+.settings
