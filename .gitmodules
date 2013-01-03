@@ -1,0 +1,3 @@
+[submodule "VIVO"]
+	path = VIVO
+	url = https://github.com/vivo-project/VIVO.git
