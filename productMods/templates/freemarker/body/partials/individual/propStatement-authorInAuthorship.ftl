@@ -56,7 +56,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <#if statement.journal??>
                     <em>${statement.journal!}</em>.&nbsp;
                     <#if statement.volume?? && statement.issue?? && statement.startPage?? && statement.endPage??>
-                        Vol. ${statement.volume!} No. ${statement.issue!} ${statement.startPage!}-${statement.endPage!}.
+                        ${statement.volume!}.${statement.issue!},  ${statement.startPage!}-${statement.endPage!}.
                     <#elseif statement.volume?? && statement.startPage?? && statement.endPage??>
                         ${statement.volume!}:${statement.startPage!}-${statement.endPage!}.
                     <#elseif statement.volume?? && statement.startPage??>
