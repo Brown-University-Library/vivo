@@ -1,6 +1,5 @@
 #Config
 deploy.properties
-build.xml
 
 #Build dir
 .build/
@@ -8,6 +7,7 @@ build.xml
 #Release files
 vivo-rel-1.5.1
 vitro-data
+data
 vivo-rel-1.5.1.zip
 
 #Eclipse
