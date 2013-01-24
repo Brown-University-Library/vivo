@@ -38,12 +38,12 @@
             
             OPTIONAL { ?object core:preferredTitle ?title }
             OPTIONAL { ?object core:dateTimeInterval ?dateTimeInterval 
-            OPTIONAL { ?dateTimeInterval core:start ?dateTimeStartValue .
-                      ?dateTimeStartValue core:dateTime ?dateTimeStart 
-            }
-            OPTIONAL { ?dateTimeInterval core:end ?dateTimeEndValue .
-                      ?dateTimeEndValue core:dateTime ?dateTimeEnd 
-            }
+                OPTIONAL { ?dateTimeInterval core:start ?dateTimeStartValue .
+                          ?dateTimeStartValue core:dateTime ?dateTimeStart 
+                }
+                OPTIONAL { ?dateTimeInterval core:end ?dateTimeEndValue .
+                          ?dateTimeEndValue core:dateTime ?dateTimeEnd 
+                }
             } 
             
             <collated>
@@ -112,12 +112,12 @@
         PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;   
         CONSTRUCT { 
             ?subject ?property ?object .  
-            ?role core:dateTimeInterval ?dateTimeInterval .
+            ?object core:dateTimeInterval ?dateTimeInterval .
             ?dateTimeInterval core:start ?dateTimeStartValue .
             ?dateTimeStartValue core:dateTime ?dateTimeStart 
         } WHERE {
             ?subject ?property ?object .  
-            ?role core:dateTimeInterval ?dateTimeInterval .
+            ?object core:dateTimeInterval ?dateTimeInterval .
             ?dateTimeInterval core:start ?dateTimeStartValue .
             ?dateTimeStartValue core:dateTime ?dateTimeStart 
         } 
@@ -127,12 +127,12 @@
         PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;   
         CONSTRUCT { 
             ?subject ?property ?object .  
-            ?role core:dateTimeInterval ?dateTimeInterval .
+            ?object core:dateTimeInterval ?dateTimeInterval .
             ?dateTimeInterval core:end ?dateTimeEndValue .
             ?dateTimeEndValue core:dateTime ?dateTimeEnd 
         } WHERE {
             ?subject ?property ?object .  
-            ?role core:dateTimeInterval ?dateTimeInterval .
+            ?object core:dateTimeInterval ?dateTimeInterval .
             ?dateTimeInterval core:end ?dateTimeEndValue .
             ?dateTimeEndValue core:dateTime ?dateTimeEnd 
         } 
