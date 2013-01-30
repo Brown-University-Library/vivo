@@ -41,10 +41,17 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <#include "menu.ftl">
 
         <section id="intro" role="region">
-            <h2>Welcome to Brown VIVO</h2>
+            <h2>Welcome to Brown VIVO (beta)</h2>
+            
+           <p style="background-color:#FFF9D7">This VIVO site will launch in the spring of 2013. Training for profile editing will be available in March.  
+           We are now in the process fixing problems and correcting data. 
+           Please report issues or request help at: <a href="mailto:vivoteam@brown.edu">vivoteam@brown.edu</a>.  Visit our 
+           <a href="/help">Help pages</a> for further information.</p>
 
             <p>VIVO is a research-focused discovery tool that enables collaboration among researchers across all disciplines.</p>
+            <!--
             <p>Browse or search information on people, departments, events, grants, and publications.</p>
+            -->
             
             <section id="search-home" role="region">
                 <h3>Search Brown VIVO</h3>
