@@ -15,3 +15,6 @@ revisionInfo
 .classpath
 .project
 .settings
+
+#Local build script
+rebuild.sh
