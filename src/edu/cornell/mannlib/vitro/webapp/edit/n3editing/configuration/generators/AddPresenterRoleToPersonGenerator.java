@@ -36,9 +36,6 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
     final static String intervalType = vivoCore + "DateTimeInterval";
     final static String intervalToStart = vivoCore + "start";
     final static String intervalToEnd = vivoCore + "end";
-    // final static String dateTimeValueType = vivoCore + "DateTimeValue";
-    // final static String dateTimeValue = vivoCore + "dateTime";
-    // final static String dateTimePrecision = vivoCore + "dateTimePrecision";
     final static String dateTimePred = vivoCore + "dateTimeValue";
     final static String dateTimeValueType = vivoCore + "DateTimeValue";
     final static String dateTimeValue = vivoCore + "dateTime";
@@ -76,10 +73,6 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
         conf.addNewResource("newConference", DEFAULT_NS_FOR_NEW_RESOURCE);
         conf.addNewResource("role", DEFAULT_NS_FOR_NEW_RESOURCE);
         conf.addNewResource("dateTimeNode", DEFAULT_NS_FOR_NEW_RESOURCE);
-        //conf.addNewResource("intervalNode", DEFAULT_NS_FOR_NEW_RESOURCE);
-        //conf.addNewResource("startNode", DEFAULT_NS_FOR_NEW_RESOURCE);
-        //conf.addNewResource("endNode", DEFAULT_NS_FOR_NEW_RESOURCE);
-        
         
         //uris in scope: none   
         //literals in scope: none
@@ -93,19 +86,9 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
         conf.addSparqlForExistingUris("existingPresentation", presentationQuery);
         conf.addSparqlForExistingUris("existingConference", existingConferenceQuery);
         conf.addSparqlForExistingUris("presentationType", presentationTypeQuery);
-        conf.addSparqlForExistingLiteral(
-                "dateTime-value", existingDateQuery);
-//        conf.addSparqlForExistingLiteral(
-//                "endField-value", existingEndDateQuery);
-//        conf.addSparqlForExistingUris(
-//                "intervalNode", existingIntervalNodeQuery);
-//        conf.addSparqlForExistingUris("startNode", existingStartNodeQuery);
-//        conf.addSparqlForExistingUris("endNode", existingEndNodeQuery);
-//        conf.addSparqlForExistingUris("startField-precision", 
-//                existingStartPrecisionQuery);
-//        conf.addSparqlForExistingUris("endField-precision", 
-//                existingEndPrecisionQuery);
-        
+        conf.addSparqlForExistingLiteral("dateTime-value", existingDateQuery);
+        conf.addSparqlForExistingUris("dateTime-precision", existingDatePrecisionQuery);
+
         conf.addField( new FieldVTwo(). // an autocomplete field
                 setName("existingPresentation") 
                 );
@@ -157,22 +140,6 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
                         VitroVocabulary.Precision.NONE.uri())
                         )
                 );
-//        conf.addField( new FieldVTwo().setName("startField").
-//                setEditElement( 
-//                        new DateTimeWithPrecisionVTwo(null, 
-//                                VitroVocabulary.Precision.YEAR.uri(),
-//                                VitroVocabulary.Precision.NONE.uri())
-//                              )
-//                );
-//        
-//        conf.addField( new FieldVTwo().setName("endField").
-//                setEditElement( 
-//                        new DateTimeWithPrecisionVTwo(null, 
-//                                VitroVocabulary.Precision.YEAR.uri(),
-//                                VitroVocabulary.Precision.NONE.uri())
-//                              )
-//                );
-//        
         conf.addValidator(new AntiXssValidation());
         conf.addValidator(new AutocompleteRequiredInputValidator("existingPresentation", "presentationLabel"));
         prepare(vreq, conf);
@@ -270,6 +237,13 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
     
     final static String existingDateQuery =
         "SELECT ?existingDate WHERE { \n" +
+        "  ?role <" + dateTimePred + "> ?dateNode . \n" +
+        "  ?dateNode a <" + dateTimeValueType +"> . \n" +
+        "  ?dateNode <" + dateTimeValue + "> ?existingDate . \n" +
+        "  ?dateNode <" + dateTimePrecision + "> ?existingDatePrecision . }";
+
+    final static String existingDatePrecisionQuery =
+        "SELECT ?existingDatePrecision WHERE { \n" +
         "  ?role <" + dateTimePred + "> ?dateNode . \n" +
         "  ?dateNode a <" + dateTimeValueType +"> . \n" +
         "  ?dateNode <" + dateTimeValue + "> ?existingDate . \n" +

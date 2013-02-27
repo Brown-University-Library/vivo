@@ -145,7 +145,6 @@ Set this flag on the input acUriReceiver where you would like this behavior to o
     <#--Add single dateTime value-->
     <#assign htmlForElements = editConfiguration.pageData.htmlForElements />
     <#if htmlForElements?keys?seq_contains("dateTime")>
-        <label class="dateTime" for="dateTime">Year</label>
         ${htmlForElements["dateTime"]} 
     </#if>
 	<#--End draw elements-->
