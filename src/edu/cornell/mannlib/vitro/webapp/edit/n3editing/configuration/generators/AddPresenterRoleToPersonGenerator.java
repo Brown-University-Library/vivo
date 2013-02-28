@@ -69,16 +69,13 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
                                            n3ForExistingConferenceNewPres, 
                                            n3ForExistingConferenceExistingPres, 
                                            n3ForDate,
-                                           getN3ForDateTimeAssertion()
-                                           //n3ForEnd 
+                                           n3ForNewDate
                                            ) );
         
         conf.addNewResource("presentation", DEFAULT_NS_FOR_NEW_RESOURCE);
         conf.addNewResource("newConference", DEFAULT_NS_FOR_NEW_RESOURCE);
         conf.addNewResource("role", DEFAULT_NS_FOR_NEW_RESOURCE);
-        //conf.addNewResource("intervalNode", DEFAULT_NS_FOR_NEW_RESOURCE);
         conf.addNewResource("dateTimeNode", DEFAULT_NS_FOR_NEW_RESOURCE);
-        //conf.addNewResource("endNode", DEFAULT_NS_FOR_NEW_RESOURCE);
         
         //uris in scope: none   
         //literals in scope: none
@@ -94,16 +91,9 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
         conf.addSparqlForExistingUris("presentationType", presentationTypeQuery);
         conf.addSparqlForExistingLiteral(
                 "dateField-value", existingDateQuery);
-        //conf.addSparqlForExistingLiteral(
-        //        "endField-value", existingEndDateQuery);
-        //conf.addSparqlForExistingUris(
-        //        "intervalNode", existingIntervalNodeQuery);
         conf.addSparqlForExistingUris("dateTimeNode", existingDateNodeQuery);
-        //conf.addSparqlForExistingUris("endNode", existingEndNodeQuery);
         conf.addSparqlForExistingUris("dateField-precision", 
                 existingDatePrecisionQuery);
-        //conf.addSparqlForExistingUris("endField-precision", 
-        //        existingEndPrecisionQuery);
         
         conf.addField( new FieldVTwo(). // an autocomplete field
                 setName("existingPresentation") 
@@ -155,7 +145,6 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
                                 VitroVocabulary.Precision.NONE.uri())
                               )
                 );
-        //conf.addValidator(new DateTimeIntervalValidationVTwo("dateField"));
         conf.addValidator(new AntiXssValidation());
         conf.addValidator(new AutocompleteRequiredInputValidator("existingPresentation", "presentationLabel"));
         prepare(vreq, conf);
@@ -249,9 +238,9 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
     
     final static String existingDateQuery =
         "SELECT ?existingDateStart WHERE { \n" +
-        "  ?role <" + dateTimePred + "> ?dateNode . \n" +
-        "  ?dateNode a <" + dateTimeValueType +"> . \n" +
-        "  ?dateNode <" + dateTimeValue + "> ?existingDateStart . }";
+        "  ?role <" + dateTimePred + "> ?dateTimeNode . \n" +
+        "  ?dateTimeNode a <" + dateTimeValueType +"> . \n" +
+        "  ?dateTimeNode <" + dateTimeValue + "> ?existingDateStart . }";
     
     final static String existingDateNodeQuery = 
         "SELECT ?existingDateNode WHERE { \n" +
@@ -263,13 +252,5 @@ public class AddPresenterRoleToPersonGenerator extends VivoBaseGenerator impleme
         "  ?role <" + dateTimePred + "> ?dateNode . \n" +
         "  ?dateNode a  <" + dateTimeValueType + "> . \n" +           
         "  ?dateNode <" + dateTimePrecision + "> ?existingStartPrecision . }";
-
-    private String getN3ForDateTimeAssertion() {
-        return "@prefix vivo: <" + vivoCore + "> . \n" +
-        "?role <" + dateTimePred + "> ?dateTimeNode . \n" +
-        "?dateTimeNode a <" + dateTimeValueType + "> . \n" +
-        "?dateTimeNode <" + dateTimeValue + "> ?dateField-value . \n" +
-        "?dateTimeNode <" + dateTimePrecision + "> ?dateField-precision . ";
-    }
     
 }
