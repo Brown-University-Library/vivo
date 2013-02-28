@@ -144,8 +144,8 @@ Set this flag on the input acUriReceiver where you would like this behavior to o
   </div>
     <#--Add single dateTime value-->
     <#assign htmlForElements = editConfiguration.pageData.htmlForElements />
-    <#if htmlForElements?keys?seq_contains("dateTime")>
-        ${htmlForElements["dateTime"]} 
+    <#if htmlForElements?keys?seq_contains("dateField")>
+        ${htmlForElements["dateField"]} 
     </#if>
 	<#--End draw elements-->
 
