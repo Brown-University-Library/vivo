@@ -39,6 +39,7 @@ public class PersonHasPreviousPositionHistoryGenerator extends VivoBaseGenerator
     final static String dateTimeValueType = vivoCore + "DateTimeValue";
     final static String dateTimeValue = vivoCore + "dateTime";
     final static String dateTimePrecision = vivoCore + "dateTimePrecision";
+    final static String blocalNamespace = "http://vivo.brown.edu/ontology/vivo-brown/";
     
     public PersonHasPreviousPositionHistoryGenerator() {}
 
@@ -166,6 +167,7 @@ public class PersonHasPreviousPositionHistoryGenerator extends VivoBaseGenerator
     
     final static String n3ForNewPosition = 
         "@prefix core: <" + vivoCore + "> . \n" +   
+        "@prefix blocal: <" + blocalNamespace + "> . \n" +
         "?person blocal:personInPreviousPosition  ?position . \n" +
         "?position a  ?positionType . \n" +              
         "?position blocal:previousPositionForPerson ?person ; ";    
