@@ -88,7 +88,7 @@
             <#-- Positions -->
             <#assign positions = propertyGroups.pullProperty("${core}personInPosition")!>
             <#if positions?has_content> <#-- true when the property is in the list, even if not populated (when editing) -->
-                <@p.objectPropertyListing positions />
+                <@p.objectPropertyListing positions false />
             </#if> 
         </header>
          
