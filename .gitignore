@@ -18,3 +18,10 @@ revisionInfo
 
 #Local build script
 rebuild.sh
+
+#IntelliJ
+.idea/
+brown-vivo.properties
+brown-vivo.xml
+module_brown-vivo.xml
+out/
