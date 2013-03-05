@@ -43,10 +43,13 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <section id="intro" role="region">
             <h2>Welcome to Brown VIVO (beta)</h2>
             
-           <p style="background-color:#FFF9D7">This VIVO site will launch in the spring of 2013. Training for profile editing will be available in March.  
-           We are now in the process fixing problems and correcting data. 
-           Please report issues or request help at: <a href="mailto:vivoteam@brown.edu">vivoteam@brown.edu</a>.  Visit our 
-           <a href="/help">Help pages</a> for further information.</p>
+ 			<p style="background-color:#FFF9D7"> 
+			 The Library and CIS will begin working with individual departments in March 2013 to provide
+			 VIVO training and assistance for faculty and department managers.  A schedule is under development. 
+ 			<br /><br />
+           
+ 			Please report issues or request help at: <a href="mailto:vivoteam@brown.edu">vivoteam@brown.edu</a>.
+ 			Visit our <a href="/help">Help pages</a> for further information.</p>
 
             <p>VIVO is a research-focused discovery tool that enables collaboration among researchers across all disciplines.</p>
             <!--
