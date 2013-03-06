@@ -9,27 +9,25 @@
 
 <#import "lib-datetime.ftl" as dt>
 
------
-
 <@showRole statement />
+
 
 <#-- Use a macro to keep variable assignments local; otherwise the values carry over to the
      next statement -->
 <#macro showRole statement>
     <#local linkedIndividual>
-        <#if statement.work??>
-            <a href="${profileUrl(statement.uri("work"))}" title="artistic-work">${statement.workLabel!statement.roleLabel}</a>
+        <#if statement.artisticWork??>
+            <a href="${profileUrl(statement.uri("artisticWork"))}" title="artistic-work">${statement.artisticWorkLabel!statement.roleLabel}</a>
         <#else>
             <#-- This shouldn't happen, but we must provide for it -->
             <a href="${profileUrl(statement.uri("role"))}" title="missing activity">missing activity</a>
         </#if>
     </#local>
     
-    <#local hasVenue>
-        <#if statement.venue?has_content && statement.venueLabel?has_content>
-            at <a href="${profileUrl(statement.uri("venue"))}" title="henue">${statement.venueLabel}</a>
+    <#local linkedVenue>
+        <#if statement.venue??>
+            at <a href="${profileUrl(statement.uri("venue"))}" title="venue">${statement.venueLabel!statementRoleLabel}</a>
         </#if>
     </#local>
-    
-    -----------${linkedIndividual} ${hasVenue} <@dt.yearSpan "${statement.dateTime!}" /> 
+    ${linkedIndividual} ${linkedVenue} <@dt.yearSpan "${statement.dateTime!}" /> 
 </#macro>

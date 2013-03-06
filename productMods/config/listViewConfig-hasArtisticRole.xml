@@ -6,37 +6,110 @@
 <list-view-config>
     <query-select>    
         PREFIX afn:   &lt;http://jena.hpl.hp.com/ARQ/function#&gt;
-        PREFIX vivo:  &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX core:  &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
         
-        SELECT DISTINCT 
+        SELECT DISTINCT <collated>?subclass</collated>
+                        # send the property to the template, since this view supports multiple role properties
                         ?property
                         ?role 
                         ?roleLabel 
-                        ?work
-                        ?workLabel
+                        ?artisticWork ?artisticWorkName 
+                        ?artisticWorkLabel
                         ?venue
                         ?venueLabel
                         ?dateTime
-        FROM &lt;http://localhost/artistic-works&gt;
         WHERE {                
-                ?subject ?property ?role .
-                ?role rdfs:label ?roleLabel .
-                ?role vivo:roleRealizedIn ?artisticWork . 
-                ?artisticWork rdfs:label ?workLabel .
-                OPTIONAL {
-                          ?artisticWork blocal:hasVenue ?venue .
-                          ?venue rdfs:label ?venueLabel .
-                         }
-                OPTIONAL {
-                         ?artisticWork vivo:dateTimeValue ?dtv .
-                         ?dtv vivo:dateTime ?dateTime .
-                         #OPTIONAL {?dateTime rdfs:label ?dateTimeLabel}
-                         }
-        } ORDER BY DESC(?dateTime) ?workLabel
+            ?subject ?property ?role  
+            
+            OPTIONAL {  ?role core:roleRealizedIn ?artisticWork 
+                        LET (?artisticWorkName := afn:localname(?artisticWork)) 
+                        OPTIONAL { ?artisticWork rdfs:label
+                                   ?artisticWorkLabel }
+                        <collated>
+                        ?artisticWork vitro:mostSpecificType ?subclass   
+                        </collated>
+            }           
+            OPTIONAL {  ?role core:roleContributesTo ?artisticWork 
+                        LET (?artisticWorkName := afn:localname(?artisticWork)) 
+                        OPTIONAL { ?artisticWork rdfs:label ?artisticWorkLabel }
+                        <collated>
+                        ?artisticWork vitro:mostSpecificType ?subclass   
+                        </collated>
+            }           
+            OPTIONAL { ?role rdfs:label ?roleLabel }
+            OPTIONAL {
+                    ?artisticWork blocal:hasVenue ?venue .
+                    ?venue rdfs:label ?venueLabel .
+            }
+            <critical-data-required>
+            FILTER ( bound(?artisticWork) )
+            </critical-data-required>
+        } ORDER BY <collated>?subclass</collated> DESC(?dateTime) ?artisticWorkLabel ?artisticWorkName
     </query-select>
+    
+    <query-construct>
+        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;  
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;          
+        PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
+        
+        CONSTRUCT {
+            ?subject ?property ?role .
+            ?role core:roleRealizedIn ?artisticWork .
+            ?artisticWork vitro:mostSpecificType ?subclass .
+        } WHERE {
+            ?subject ?property ?role .
+            ?role core:roleRealizedIn ?artisticWork .
+            ?artisticWork vitro:mostSpecificType ?subclass
+        }
+    </query-construct>
+    
+    <query-construct>
+        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;    
+        CONSTRUCT { 
+            ?subject ?property ?role .
+            ?role ?roleProperty ?roleValue . 
+            ?artisticWork rdfs:label ?artisticWorkName 
+        } WHERE {
+            {
+                ?subject ?property ?role 
+            } UNION {
+                ?subject ?property ?role .
+                ?role ?roleProperty ?roleValue 
+            } UNION {
+                ?subject ?property ?role .
+                ?role core:roleRealizedIn ?artisticWork . 
+                ?artisticWork rdfs:label ?artisticWorkName 
+            }
+        } 
+    </query-construct>
 
+    <query-construct>
+        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+            
+        CONSTRUCT { 
+            ?subject ?property ?role .
+            ?role ?roleProperty ?roleValue . 
+            ?artisticWork rdfs:label ?artisticWorkName 
+        } WHERE {
+            {
+                ?subject ?property ?role 
+            } UNION {
+                ?subject ?property ?role .
+                ?role ?roleProperty ?roleValue 
+            } UNION {
+                ?subject ?property ?role .
+                ?role core:roleRealizedIn ?artisticWork . 
+                ?artisticWork blocal:hasVenue ?venue .
+                ?venue rdfs:label ?venueLabel . 
+            }
+        } 
+    </query-construct>
+        
     <template>propStatement-hasArtisticRole.ftl</template>
 </list-view-config>
