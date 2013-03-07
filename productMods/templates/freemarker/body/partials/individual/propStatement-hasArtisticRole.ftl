@@ -26,8 +26,14 @@
     
     <#local linkedVenue>
         <#if statement.venue??>
-            at <a href="${profileUrl(statement.uri("venue"))}" title="venue">${statement.venueLabel!statementRoleLabel}</a>
+            <a href="${profileUrl(statement.uri("venue"))}" title="venue">${statement.venueLabel!statementRoleLabel}</a>
         </#if>
     </#local>
-    ${linkedIndividual} ${linkedVenue} <@dt.yearSpan "${statement.dateTime!}" /> 
+
+    <#local dateTime>
+        <@dt.yearSpan "${statement.dateTime!}" /> 
+    </#local>
+
+    <@s.join [ linkedIndividual, linkedVenue ] /> ${dateTime!}
+    
 </#macro>
