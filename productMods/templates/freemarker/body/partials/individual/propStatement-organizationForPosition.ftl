@@ -27,7 +27,9 @@
     </#local>
 
     <#local preferredTitle>
-        <#if statement.honoraryTitle??>
+        <#if statement.subclass?contains("Administrative")>
+            ${statement.positionTitle!}
+        <#elseif statement.honoraryTitle??>
             ${statement.honoraryTitle}
         <#else>
             ${statement.positionTitle!}
