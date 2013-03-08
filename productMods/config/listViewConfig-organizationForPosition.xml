@@ -6,43 +6,48 @@
 <list-view-config>
     <query-select>    
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX afn:  &lt;http://jena.hpl.hp.com/ARQ/function#&gt;
-	PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
-	PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+      PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
+      PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
         
         SELECT DISTINCT <collated> ?subclass </collated>
                         ?position
                         ?positionTitle 
                         ?person ?personName 
+                        ?preferredTitle
                         ?dateTimeStart ?dateTimeEnd 
                         ?hideThis
+                        ?honoraryTitle 
         WHERE {
-	?subject ?property ?position .
-	?position a blocal:FisPosition .
+             ?subject ?property ?position .
+             ?position a blocal:FisPosition .
 
-            OPTIONAL { ?position core:positionForPerson ?person .
-                       ?person rdfs:label ?personName   
-            }     
+            OPTIONAL { ?position vivo:positionForPerson ?person .
+                       ?person rdfs:label ?personName .
+                       OPTIONAL { ?person blocal:hasHonorific ?honoraryTitle }
+            } 
             <collated>           
             OPTIONAL { ?position vitro:mostSpecificType ?subclass .
-                       ?subclass rdfs:subClassOf core:Position 
+                       ?subclass rdfs:subClassOf vivo:Position 
             }   
             </collated>
             OPTIONAL { ?position rdfs:label ?positionTitle }
-            OPTIONAL { ?position core:hideFromDisplay ?hideThis }
-            OPTIONAL { ?position core:dateTimeInterval ?dateTimeInterval 
-                       OPTIONAL { ?dateTimeInterval core:start ?dateTimeStartValue .                     
-                                  ?dateTimeStartValue core:dateTime ?dateTimeStart 
+            OPTIONAL { ?position vivo:hideFromDisplay ?hideThis }
+            OPTIONAL { ?position vivo:dateTimeInterval ?dateTimeInterval 
+                       OPTIONAL { ?dateTimeInterval vivo:start ?dateTimeStartValue .                     
+                                  ?dateTimeStartValue vivo:dateTime ?dateTimeStart 
                        }
-                       OPTIONAL { ?dateTimeInterval core:end ?dateTimeEndValue .
-                                  ?dateTimeEndValue core:dateTime ?dateTimeEnd  
+                       OPTIONAL { ?dateTimeInterval vivo:end ?dateTimeEndValue .
+                                  ?dateTimeEndValue vivo:dateTime ?dateTimeEnd  
                        }
             # Get current positions only: end date is either null or not in the past
             } 
-        #      NOT EXISTS { ?position core:hideFromDisplay ?hideThis }
+        #      NOT EXISTS { ?position vivo:hideFromDisplay ?hideThis }
               FILTER ( !bound(?dateTimeEnd) ||                        
                        afn:substring(str(?dateTimeEnd), 0, 4) &gt;= afn:substring(str(afn:now()), 0, 4) )
+              #Remove honorofic positions so they don't appear twice
+              MINUS { ?position a blocal:Honorific }
               <critical-data-required>
               FILTER ( bound(?person) )
               </critical-data-required>
@@ -51,67 +56,76 @@
     
     <query-construct>
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;  
-        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;  
         CONSTRUCT {
             ?subject ?property ?position .
             ?position vitro:mostSpecificType ?subclass .
-            ?subclass rdfs:subClassOf core:Position 
+            ?subclass rdfs:subClassOf vivo:Position 
         } WHERE {
             ?subject ?property ?position .
             ?position vitro:mostSpecificType ?subclass .
-            ?subclass rdfs:subClassOf core:Position 
+            ?subclass rdfs:subClassOf vivo:Position 
         }
     </query-construct>
     
     <query-construct>
-        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;
-        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;    
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt; 
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;       
         CONSTRUCT { 
             ?subject ?property ?position .
             ?position ?positionProperty ?positionValue .
-            ?person rdfs:label ?personName  
+            ?person rdfs:label ?personName  .
+            ?person blocal:hasHonorific ?honoraryTitle .
         } WHERE {
             {
-               ?subject ?property ?position 
+               ?subject ?property ?position .
+               ?position a blocal:FisPosition .
             } UNION {
                ?subject ?property ?position .
                ?position ?positionProperty ?positionValue 
             } UNION {
                ?subject ?property ?position .
-               ?position core:positionForPerson ?person .
+               ?position vivo:positionForPerson ?person .
                ?person rdfs:label ?personName   
+            } 
+            UNION {
+                ?subject ?property ?position .
+                ?position a blocal:Honorific .
+                ?position vivo:positionForPerson ?person .
+                ?position rdfs:label ?honoraryTitle .
             }
-        } 
-    </query-construct>
-    
-    <query-construct>
-        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;   
-        CONSTRUCT { 
-            ?subject ?property ?position .  
-            ?position core:dateTimeInterval ?dateTimeInterval .
-            ?dateTimeInterval core:start ?dateTimeStartValue .
-            ?dateTimeStartValue core:dateTime ?dateTimeStart 
-        } WHERE {
-            ?subject ?property ?position .  
-            ?position core:dateTimeInterval ?dateTimeInterval .
-            ?dateTimeInterval core:start ?dateTimeStartValue .
-            ?dateTimeStartValue core:dateTime ?dateTimeStart 
         } 
     </query-construct>
 
     <query-construct>
-        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;    
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;   
         CONSTRUCT { 
             ?subject ?property ?position .  
-            ?position core:dateTimeInterval ?dateTimeInterval .
-            ?dateTimeInterval core:end ?dateTimeEndValue .
-            ?dateTimeEndValue core:dateTime ?dateTimeEnd 
+            ?position vivo:dateTimeInterval ?dateTimeInterval .
+            ?dateTimeInterval vivo:start ?dateTimeStartValue .
+            ?dateTimeStartValue vivo:dateTime ?dateTimeStart 
         } WHERE {
             ?subject ?property ?position .  
-            ?position core:dateTimeInterval ?dateTimeInterval .
-            ?dateTimeInterval core:end ?dateTimeEndValue .
-            ?dateTimeEndValue core:dateTime ?dateTimeEnd 
+            ?position vivo:dateTimeInterval ?dateTimeInterval .
+            ?dateTimeInterval vivo:start ?dateTimeStartValue .
+            ?dateTimeStartValue vivo:dateTime ?dateTimeStart 
+        } 
+    </query-construct>
+
+    <query-construct>
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;    
+        CONSTRUCT { 
+            ?subject ?property ?position .  
+            ?position vivo:dateTimeInterval ?dateTimeInterval .
+            ?dateTimeInterval vivo:end ?dateTimeEndValue .
+            ?dateTimeEndValue vivo:dateTime ?dateTimeEnd 
+        } WHERE {
+            ?subject ?property ?position .  
+            ?position vivo:dateTimeInterval ?dateTimeInterval .
+            ?dateTimeInterval vivo:end ?dateTimeEndValue .
+            ?dateTimeEndValue vivo:dateTime ?dateTimeEnd 
         } 
     </query-construct>
     
