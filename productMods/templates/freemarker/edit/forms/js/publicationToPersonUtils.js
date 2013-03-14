@@ -345,6 +345,20 @@ var publicationToPersonUtils = {
             this.startPage.val('');
             this.endPage.val('');
             this.chapterNbr.val('');
+        } else if ( selectedType == 'Translation') {
+            // if the user has changed type, keep any relevant values and display the 
+            // acSelection as appropriate
+            var ckForVal = this.getAcUriReceiverVal('collection');
+            if ( ckForVal == '' || ckForVal == this.sentinel ) {
+		this.collection.parent('p').show();
+            }
+
+            // if the user is changing type, ensure that irrelevant fields are cleared
+            // and reset an acSelection divs
+            if ( this.collection.val() != '' && this.collection.val().substring(0, 18) != "Select an existing" ) {
+                this.collection.val('');
+                this.resetAcSelection('collection');                
+            }
         }
         else {
 
