@@ -141,6 +141,10 @@
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasInvestigatorRole.xml</display:listViewConfigFile>
     </rdf:Description>
 
+    <rdf:Description rdf:about="http://vivoweb.org/ontology/core#hasTeacherRole">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-teacherForCourse.xml</display:listViewConfigFile>
+    </rdf:Description>
+
     <!--
      ******************************************************************
      end roles (from person) config
