@@ -11,12 +11,19 @@
         PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
+        PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
         
         SELECT DISTINCT <collated>?subclass</collated>
-                        ?role ?roleLabel ?sectionCount
-                        ?course ?courseLabel
-                        ?canon ?canonLabel
-                        ?dateTimeInterval ?termLabel
+                        ?role
+                        ?roleLabel
+                        ?sectionCount
+                        ?course
+                        ?courseLabel
+                        ?canon
+                        ?canonLabel
+                        ?dateTimeInterval
+                        ?termLabel
+                        ?startValue
                         
             WHERE {
                         
@@ -42,8 +49,8 @@
                             
 
                             <collated>
-                            ?course vitro:mostSpecificType ?sublcass .
-                            ?subclass owl:equivalentClass vivo:Course .
+                            ?course vitro:mostSpecificType ?subclass .
+                            ?subclass rdfs:subClassOf event:Event 
                             </collated>
                            
                 }
@@ -53,13 +60,17 @@
                            OPTIONAL { ?dateTimeInterval a vivo:AcademicTerm .
                                       ?dateTimeInterval rdfs:label ?termLabel
                            }
+                           OPTIONAL { ?dateTimeInterval a vivo:AcademicTerm .
+                                      ?dateTimeInterval vivo:start ?startDate .
+                                      ?startDate vivo:dateTime ?startValue .
+                            }
                 }
                 
                 <critical-data-required>
                 FILTER ( bound(?course) )
                 </critical-data-required>
         
-            } ORDER BY <collated>?subclass</collated> ?dateTimeInterval ?canonLabel
+            } ORDER BY <collated>?subclass</collated> DESC(?startValue) ?canonLabel
     </query-select>
  
     <query-construct>
@@ -152,7 +163,9 @@
             ?subject ?property ?role .
             ?role vivo:dateTimeInterval ?dateTimeInterval .
             ?dateTimeInterval a vivo:AcademicTerm .
-            ?dateTimeInterval rdfs:label ?termLabel 
+            ?dateTimeInterval rdfs:label ?termLabel .
+            ?dateTimeInterval vivo:start ?startDate .
+            ?startDate vivo:dateTime ?startValue
         } WHERE {
 
             {
@@ -164,6 +177,12 @@
                 ?role vivo:dateTimeInterval ?dateTimeInterval .
                 ?dateTimeInterval a vivo:AcademicTerm .
                 ?dateTimeInterval rdfs:label ?termLabel 
+            } UNION {
+                ?subject ?property ?role .
+                ?role vivo:dateTimeInterval ?dateTimeInterval .
+                ?dateTimeInterval a vivo:AcademicTerm .
+                ?dateTimeInterval vivo:start ?startDate .
+                ?startDate vivo:dateTime ?startValue .
             }
         }
     </query-construct>

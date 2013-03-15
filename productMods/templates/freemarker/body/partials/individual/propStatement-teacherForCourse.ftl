@@ -15,7 +15,8 @@
 <#macro showRole statement>
 <#local linkedIndividual>
     <#if statement.canon??>
-        <a href="${profileUrl(statement.uri("canon"))}" title="class">${statement.canonLabel!}</a>, ${statement.termLabel}
+        <a href="${profileUrl(statement.uri("canon"))}" title="class">${statement.canonLabel!}</a>
+        . ${statement.termLabel}.
     <#else>
         <#-- This shouldn't happen, but we must provide for it -->
         <a href="${profileUrl(statement.uri("canon"))}" title="missing activity">missing activity</a>
@@ -26,12 +27,10 @@
 
 <#local sectionCount>
     <#local numSections = statement.sectionCount! >
-    <#if numSections == "1">
-        ${statement.sectionCount!} section.
-    <#else>
+    <#if numSections != "1">
         ${statement.sectionCount!} sections.
     </#if>
 </#local>
 
-${linkedIndividual}. ${sectionCount!}
+${linkedIndividual} ${sectionCount!}
 </#macro>
