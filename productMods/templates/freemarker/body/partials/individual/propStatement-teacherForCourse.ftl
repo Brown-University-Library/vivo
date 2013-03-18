@@ -16,21 +16,12 @@
 <#local linkedIndividual>
     <#if statement.canon??>
         <a href="${profileUrl(statement.uri("canon"))}" title="class">${statement.canonLabel!}</a>
-        . ${statement.termLabel}.
+        . ${statement.termList}.
     <#else>
         <#-- This shouldn't happen, but we must provide for it -->
         <a href="${profileUrl(statement.uri("canon"))}" title="missing activity">missing activity</a>
     </#if>
 </#local>
 
-
-
-<#local sectionCount>
-    <#local numSections = statement.sectionCount! >
-    <#if numSections != "1">
-        ${statement.sectionCount!} sections.
-    </#if>
-</#local>
-
-${linkedIndividual} ${sectionCount!}
+${linkedIndividual}
 </#macro>
