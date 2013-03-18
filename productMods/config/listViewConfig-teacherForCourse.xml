@@ -14,16 +14,9 @@
         PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
         
         SELECT DISTINCT <collated>?subclass</collated>
-                        ?role
-                        ?roleLabel
-                        ?sectionCount
-                        ?course
-                        ?courseLabel
                         ?canon
                         ?canonLabel
-                        ?dateTimeInterval
-                        ?termLabel
-                        ?startValue
+                        ?termList
                         
             WHERE {
                         
@@ -65,12 +58,14 @@
                                       ?startDate vivo:dateTime ?startValue .
                             }
                 }
+
+                OPTIONAL { ?canon blocal:fullTermList ?termList}
                 
                 <critical-data-required>
                 FILTER ( bound(?course) )
                 </critical-data-required>
         
-            } ORDER BY <collated>?subclass</collated> DESC(?startValue) ?canonLabel
+            } ORDER BY ?canonLabel
     </query-select>
  
     <query-construct>
@@ -184,6 +179,32 @@
                 ?dateTimeInterval vivo:start ?startDate .
                 ?startDate vivo:dateTime ?startValue .
             }
+        }
+    </query-construct>
+
+    <query-construct>
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+
+        CONSTRUCT {?canon blocal:fullTermList ?termList .}
+        WHERE {
+            SELECT ?canon (GROUP_CONCAT(?termLabel; SEPARATOR = ", ") as ?termList)
+            WHERE {
+                SELECT ?canon ?termLabel ?startValue
+                WHERE { 
+                   ?subject ?property ?role .
+                   ?role vivo:roleRealizedIn ?course .
+                   ?course blocal:departmentOfferingOf ?canon .
+
+                   ?role vivo:dateTimeInterval ?dateTimeInterval .
+                   ?dateTimeInterval vivo:start ?startDate .
+                   ?dateTimeInterval rdfs:label ?termLabel . 
+                   ?startDate vivo:dateTime ?startValue
+
+                } ORDER BY ?startValue
+
+            } GROUP BY ?canon
         }
     </query-construct>
     
