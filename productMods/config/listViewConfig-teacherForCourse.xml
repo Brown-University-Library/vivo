@@ -34,7 +34,7 @@
                                        OPTIONAL { ?canon rdfs:label ?canonLabel }
                                        
                                        {
-                                           ?course blocal:departmenOfferingOf ?canon
+                                           ?course blocal:departmentOfferingOf ?canon
                                        } UNION {
                                            ?canon blocal:hasDepartmentOffering ?course
                                        }
