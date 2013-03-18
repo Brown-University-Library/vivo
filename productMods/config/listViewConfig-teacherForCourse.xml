@@ -14,7 +14,7 @@
         PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
         
         SELECT DISTINCT <collated>?subclass</collated>
-                        ?spoof
+                        ?role
                         ?canon
                         ?canonLabel
                         ?termList
