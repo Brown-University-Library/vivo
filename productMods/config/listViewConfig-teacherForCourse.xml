@@ -14,6 +14,7 @@
         PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
         
         SELECT DISTINCT <collated>?subclass</collated>
+                        ?spoof
                         ?canon
                         ?canonLabel
                         ?termList
@@ -59,13 +60,14 @@
                             }
                 }
 
-                OPTIONAL { ?canon blocal:fullTermList ?termList}
+                OPTIONAL { ?canon blocal:fullTermList ?termList }
+                OPTIONAL { ?spoof blocal:spoofRole ?canon }
                 
                 <critical-data-required>
                 FILTER ( bound(?course) )
                 </critical-data-required>
         
-            } ORDER BY ?canonLabel
+            } ORDER BY <collated>?subclass</collated> ?canonLabel
     </query-select>
  
     <query-construct>
@@ -203,6 +205,23 @@
                    ?startDate vivo:dateTime ?startValue
 
                 } ORDER BY ?startValue
+
+            } GROUP BY ?canon
+        }
+    </query-construct>
+
+    <query-construct>
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+
+        CONSTRUCT {?spoofRole blocal:spoofRole ?canon .}
+        WHERE {
+            SELECT ?canon (SAMPLE(?role) as ?spoofRole)
+            WHERE {
+                ?subject ?property ?role .
+                ?role vivo:roleRealizedIn ?course .
+                ?course blocal:departmentOfferingOf ?canon 
 
             } GROUP BY ?canon
         }
