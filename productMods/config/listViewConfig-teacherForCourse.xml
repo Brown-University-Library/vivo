@@ -61,7 +61,7 @@
                 }
 
                 OPTIONAL { ?canon blocal:fullTermList ?termList }
-                OPTIONAL { ?spoof blocal:spoofRole ?canon }
+                ?role blocal:sampleRole ?canon
                 
                 <critical-data-required>
                 FILTER ( bound(?course) )
@@ -215,9 +215,9 @@
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
 
-        CONSTRUCT {?spoofRole blocal:spoofRole ?canon .}
+        CONSTRUCT {?sampleRole blocal:sampleRole ?canon .}
         WHERE {
-            SELECT ?canon (SAMPLE(?role) as ?spoofRole)
+            SELECT ?canon (SAMPLE(?role) as ?sampleRole)
             WHERE {
                 ?subject ?property ?role .
                 ?role vivo:roleRealizedIn ?course .
