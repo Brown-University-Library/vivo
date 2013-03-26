@@ -78,4 +78,5 @@
             } GROUP BY ?faculty
         }
     </query-construct>
+    <template>propStatement-hasDepartmentOffering.ftl</template>
 </list-view-config>
