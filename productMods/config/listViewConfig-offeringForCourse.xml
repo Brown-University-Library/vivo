@@ -5,75 +5,39 @@
 
 <list-view-config>
     <query-select>
-        PREFIX afn: &lt;http://jena.hpl.hp.com/ARQ/function#&gt;
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
         PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-        PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
-        PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
         
-        SELECT DISTINCT <collated>?subclass</collated>
-                        ?course
-                        ?termList
-                        ?faculty
+        SELECT DISTINCT ?faculty
                         ?facLabel
+                        ?termList
                         
             WHERE {
                         
-                ?subject ?property ?course .
+                ?subject ?property ?faculty .
 
                 OPTIONAL {
-                    ?course vivo:realizedRole ?role .
-                    ?role vivo:teacherRoleOf ?faculty .
                     ?faculty rdfs:label ?facLabel .
                 }
 
-                OPTIONAL {
-                    <collated>
-                    ?course vitro:mostSpecificType ?subclass .
-                    ?subclass rdfs:subClassOf event:Event .
-                    </collated>
-                }
-
-                ?course blocal:sampleCourse ?faculty .
                 ?faculty blocal:fullTermList ?termList .
 
                 <critical-data-required>
-                FILTER ( bound(?course) )
+                FILTER ( bound(?faculty) )
                 </critical-data-required>
         
-            } ORDER BY <collated>?subclass</collated> ?facLabel
+            } ORDER BY ?facLabel
     </query-select>
 
     <query-construct>
         PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
-
-        CONSTRUCT {?sampleCourse blocal:sampleCourse ?faculty .}
-        WHERE {
-            SELECT ?faculty (SAMPLE(?course) AS ?sampleCourse)
-            WHERE {
-                ?subject ?property ?course .
-                ?course vivo:realizedRole ?role .
-                ?role vivo:teacherRoleOf ?faculty 
-
-            } GROUP BY ?faculty
-        }
-    </query-construct>
-
-
- 
-    <query-construct>
-        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
-        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
         
         CONSTRUCT {
-            ?subject ?property ?course .
-            ?course vivo:realizedRole ?role .
-            ?role vivo:teacherRoleOf ?faculty .
+            ?subject ?property ?faculty .
             ?faculty rdfs:label ?facLabel .
         } WHERE {
 
@@ -89,7 +53,7 @@
             }
         }
     </query-construct>
-    
+
     <query-construct>
         PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
@@ -114,6 +78,3 @@
             } GROUP BY ?faculty
         }
     </query-construct>
-    
-    <template>propStatement-hasDepartmentOffering.ftl</template>
-</list-view-config>
