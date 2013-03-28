@@ -253,7 +253,11 @@
      
   <!-- ****************************  End Vitro Fields *************************** -->
    
-   <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" multiValued="false"/>     
+   <field name="timestamp" type="date" indexed="true" stored="true" default="NOW" multiValued="false"/>
+
+   <!-- ****************************  Brown additional fields *************************** -->
+   <field name="etag" type="string" stored="true" indexed="false" multiValued="false" />
+
  </fields>
 
  <!-- Field to use to determine and enforce document uniqueness. 

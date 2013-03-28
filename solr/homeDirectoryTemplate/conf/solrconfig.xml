@@ -862,11 +862,9 @@
          updateRequestProcessorChains that can be used by name 
          on each Update Request
       -->
-    <!--
        <lst name="defaults">
-         <str name="update.processor">dedupe</str>
+         <str name="update.processor">etag</str>
        </lst>
-       -->
     </requestHandler>
   <!-- Binary Update Request Handler
        http://wiki.apache.org/solr/javabin
@@ -1479,6 +1477,19 @@
        <processor class="solr.RunUpdateProcessorFactory" />
      </updateRequestProcessorChain>
     -->
+  <!-- Using the SignatureUpdateProcessorFactory for ETag generation
+    -->
+   <updateRequestProcessorChain name="etag">
+     <processor class="solr.processor.SignatureUpdateProcessorFactory">
+       <bool name="enabled">true</bool>
+       <str name="signatureField">etag</str>
+       <bool name="overwriteDupes">false</bool>
+       <str name="signatureClass">solr.processor.MD5Signature</str>
+     </processor>
+     <processor class="solr.LogUpdateProcessorFactory" />
+     <processor class="solr.RunUpdateProcessorFactory" />
+   </updateRequestProcessorChain>
+
 
   <!-- Response Writers
 
