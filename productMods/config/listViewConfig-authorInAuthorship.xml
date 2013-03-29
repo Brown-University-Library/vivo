@@ -86,7 +86,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                        }
                        OPTIONAL { ?authorship core:hideFromDisplay ?hideThis }                                                      
             }
-    #        NOT EXISTS { ?authorship core:hideFromDisplay ?hideThis } 
+	    MINUS {?infoResource a bibo:Thesis}
             <critical-data-required>
             FILTER ( bound(?infoResource) )
             </critical-data-required>
