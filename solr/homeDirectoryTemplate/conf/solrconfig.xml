@@ -1484,7 +1484,7 @@
        <bool name="enabled">true</bool>
        <str name="signatureField">etag</str>
        <bool name="overwriteDupes">false</bool>
-       <str name="signatureClass">solr.processor.MD5Signature</str>
+       <str name="signatureClass">solr.processor.Lookup3Signature</str>
      </processor>
      <processor class="solr.LogUpdateProcessorFactory" />
      <processor class="solr.RunUpdateProcessorFactory" />
