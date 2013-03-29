@@ -38,6 +38,15 @@
         </#if>
     </#local>
 
-    <@s.join [ degree, linkedIndividual!, statement.deptOrSchool!, statement.info! ] /> <@dt.yearIntervalSpan "${statement.dateTimeStart!}" "${statement.dateTimeEnd!}" false/>
+    <#local linkedThesis>
+        <#if statement.thesis??>
+            <ul>
+            <li>${statement.thesisTypeLabel}: <a href="${profileUrl(statement.uri("thesis"))}" title="thesis">${statement.thesisTitle}</a></li>
+            </ul>
+        </#if>
+    </#local>
+
+    <@s.join [ degree, linkedIndividual!, statement.deptOrSchool! ] /> <@dt.yearIntervalSpan "${statement.dateTimeStart!}" "${statement.dateTimeEnd!}" false/> 
+    ${linkedThesis!}
 
 </#macro>
