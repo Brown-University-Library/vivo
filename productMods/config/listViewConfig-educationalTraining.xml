@@ -19,6 +19,7 @@
                         ?degreeName ?degreeAbbr
                         ?majorField ?deptOrSchool ?info
                         ?dateTimeStart ?dateTimeEnd
+                        ?thesis ?thesisTitle ?thesisTypeLabel
             WHERE {
                 ?subject ?property ?edTraining
                 OPTIONAL {?edTraining vitro:mostSpecificType ?trainingType .
@@ -40,6 +41,11 @@
                 OPTIONAL { ?edTraining core:majorField ?majorField }
                 OPTIONAL { ?edTraining core:departmentOrSchool ?deptOrSchool }
                 OPTIONAL { ?edTraining core:supplementalInformation ?info }
+                OPTIONAL { ?edTraining core:informationProduct ?thesis .
+                           ?thesis rdfs:label ?thesisTitle .
+                           ?thesis a ?thesisType .
+                           ?thesisType rdfs:label ?thesisTypeLabel
+                           }
                 OPTIONAL { ?edTraining core:dateTimeInterval ?dateTimeInterval
                            OPTIONAL { ?dateTimeInterval core:start ?dateTimeStartValue .
                                       ?dateTimeStartValue core:dateTime ?dateTimeStart
@@ -73,7 +79,11 @@
             ?edTraining core:trainingAtOrganization ?org .
             ?org rdfs:label ?orgName .
             ?edTraining core:degreeEarned ?degree .
-            ?edTraining core:dateTimeInterval ?dateTimeInterval
+            ?edTraining core:dateTimeInterval ?dateTimeInterval .
+            ?edTraining core:informationProduct ?thesis .
+            ?thesis rdfs:label ?thesisTitle .
+            ?thesis a ?thesisType .
+            ?thesisType rdfs:label ?thesisTypeLabel
         } WHERE {
             {
                 ?subject ?property ?edTraining .
@@ -94,6 +104,13 @@
             UNION {
                 ?subject ?property ?edTraining .
                 ?edTraining core:dateTimeInterval ?dateTimeInterval
+            }
+            UNION {
+                ?subject ?property ?edTraining .
+                ?edTraining core:informationProduct ?thesis .
+                ?thesis rdfs:label ?thesisTitle .
+                ?thesis a ?thesisType .
+                ?thesisType rdfs:label ?thesisTypeLabel .
             }
         }
     </query-construct>
