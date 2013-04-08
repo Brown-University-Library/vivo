@@ -41,7 +41,7 @@
                 OPTIONAL { ?edTraining core:majorField ?majorField }
                 OPTIONAL { ?edTraining core:departmentOrSchool ?deptOrSchool }
                 OPTIONAL { ?edTraining core:supplementalInformation ?info }
-                OPTIONAL { ?edTraining core:informationProduct ?thesis .
+                OPTIONAL { ?edTraining blocal:thesisProduct ?thesis .
                            ?thesis rdfs:label ?thesisTitle .
                            ?thesis vitro:mostSpecificType ?thesisType .
                            ?thesisType rdfs:label ?thesisTypeLabel
@@ -81,7 +81,7 @@
             ?org rdfs:label ?orgName .
             ?edTraining core:degreeEarned ?degree .
             ?edTraining core:dateTimeInterval ?dateTimeInterval .
-            ?edTraining core:informationProduct ?thesis .
+            ?edTraining blocal:thesisProduct ?thesis .
             ?thesis rdfs:label ?thesisTitle .
             ?thesis vitro:mostSpecificType ?thesisType .
             ?thesisType rdfs:label ?thesisTypeLabel
@@ -108,7 +108,7 @@
             }
             UNION {
                 ?subject ?property ?edTraining .
-                ?edTraining core:informationProduct ?thesis .
+                ?edTraining blocal:thesisProduct ?thesis .
                 ?thesis rdfs:label ?thesisTitle .
                 ?thesis vitro:mostSpecificType ?thesisType .
                 ?thesisType rdfs:label ?thesisTypeLabel .
