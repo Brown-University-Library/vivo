@@ -56,16 +56,6 @@
       </analyzer>  
     </fieldType>
 
-    <fieldType name="sort_browse" class="solr.TextField">
-      <analyzer>
-        <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <filter class="solr.ASCIIFoldingFilterFactory"/>
-        <filter class="solr.StopFilterFactory" ignoreCase="true" words="sort-stopwords.txt"  enablePositionIncrements="true" />
-        <filter class="solr.TrimFilterFactory"/> 
-      </analyzer>  
-    </fieldType>
-  
-  
     <!-- Like text, but without synonyms. Good for autocomplete matching of book/grant titles, etc.,
          where we want to remove stop words and stem. -->
     <fieldType name="text_stemmed" class="solr.TextField" positionIncrementGap="100">
@@ -117,6 +107,18 @@
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
         <filter class="solr.ASCIIFoldingFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory" />
+      </analyzer>
+    </fieldType>
+
+    <!-- Removes terms we don't want for sorting.  -->
+    <fieldType name="sort_term" class="solr.TextField">
+      <analyzer>
+        <!--<tokenizer class="solr.KeywordTokenizerFactory"/>-->
+        <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords-sort.txt"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory" />
+        <filter class="solr.TrimFilterFactory" />
       </analyzer>
     </fieldType>
 
@@ -263,7 +265,7 @@
    <field name="etag" type="string" stored="true" indexed="false" multiValued="false" />
    <field name="nameBrowseSort" type="sort_term" indexed="true" stored="true" multiValued="false" omitNorms="true" /> 
    <!-- Copy fields --> 
-   <copyField source="nameRaw" dest="nameBrowseSort" />
+   <copyField source="nameLowercaseSingleValued" dest="nameBrowseSort" />
 
  </fields>
 
