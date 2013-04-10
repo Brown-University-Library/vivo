@@ -36,6 +36,8 @@ public class VitroSearchTermNames {
     
     /** rdfs:label lowercased, no tokenizing, no stop words, no stemming **/
     public static String NAME_LOWERCASE = "nameLowercase"; // 
+    /** rdfs:label with terms stripped for sorting on browse screens **/
+    public static String NAME_BROWSE_SORT = "nameBrowseSort"; // 
 
     /** Same as NAME_LOWERCASE, but single-valued so it's sortable. **/
     // RY Need to control how indexing selects which of multiple values to copy. 
