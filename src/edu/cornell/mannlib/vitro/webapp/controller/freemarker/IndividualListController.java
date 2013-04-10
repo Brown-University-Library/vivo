@@ -250,7 +250,7 @@ public class IndividualListController extends FreemarkerHttpServlet {
             
         	 // Add alpha filter if applicable
             if ( alpha != null && !"".equals(alpha) && alpha.length() == 1) {      
-                queryText += VitroSearchTermNames.NAME_BROWSE_SORT + ":" + alpha.toLowerCase() + "*";
+                queryText += VitroSearchTermNames.NAME_LOWERCASE + ":" + alpha.toLowerCase() + "*";
             }     
             
             SolrQuery query = new SolrQuery(queryText);
@@ -260,7 +260,7 @@ public class IndividualListController extends FreemarkerHttpServlet {
             query.setStart( startRow ).setRows( pageSize );
             
             // Need a single-valued field for sorting
-            query.setSortField(VitroSearchTermNames.NAME_LOWERCASE_SINGLE_VALUED, SolrQuery.ORDER.asc);
+            query.setSortField(VitroSearchTermNames.NAME_BROWSE_SORT, SolrQuery.ORDER.asc);
 
             log.debug("Query is " + query.toString());
             return query;
