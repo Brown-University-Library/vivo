@@ -1,7 +1,0 @@
-# For sorting in browses
-
-department
-of
-center
-for
-the
