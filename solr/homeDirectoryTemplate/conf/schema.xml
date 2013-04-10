@@ -114,7 +114,7 @@
     <fieldType name="sort_term" class="solr.TextField">
       <analyzer>
         <tokenizer class="solr.KeywordTokenizerFactory"/>
-        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="((^|\s)Department\sof|(^|\s)Center\sfor\sthe)|(^|\s)Center\sfor" replacement="" replace="all"/>
+        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="((^|\s)Division\sof|(^|\s)Department\sof|(^|\s)Center\sfor\sthe)|(^|\s)Center\sfor" replacement="" replace="all"/>
         <filter class="solr.ASCIIFoldingFilterFactory"/>
         <filter class="solr.TrimFilterFactory" />
         <!-- lowercase for consistent alpha filtering -->
