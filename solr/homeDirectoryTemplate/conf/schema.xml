@@ -264,8 +264,6 @@
    <!-- ****************************  Brown additional fields *************************** -->
    <field name="etag" type="string" stored="true" indexed="false" multiValued="false" />
    <field name="nameBrowseSort" type="sort_term" indexed="true" stored="true" multiValued="false" omitNorms="true" /> 
-   <!-- Copy fields --> 
-   <copyField source="nameLowercaseSingleValued" dest="nameBrowseSort" />
 
  </fields>
 
