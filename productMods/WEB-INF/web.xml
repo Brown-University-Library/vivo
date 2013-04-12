@@ -161,7 +161,7 @@
     <url-pattern>/display</url-pattern>
     <url-pattern>/individual</url-pattern>
    </filter-mapping>
-   <! -- end ETag caching servlet filter -->
+   <!-- end ETag caching servlet filter -->
   
   <!--  Spring setup ****************************************************  -->
 <!--
