@@ -13,7 +13,7 @@
 	    tomcat.home
 	    webapp.name
 	     ====================================================================== -->
-<project name="brown-vivo" default="describe">
+<project name="vivo" default="describe">
 	
 	<!-- 
 		The build directory goes in the product directory. 

@@ -1,6 +1,5 @@
 #Config
 deploy.properties
-build.xml
 
 #Build dir
 .build/
