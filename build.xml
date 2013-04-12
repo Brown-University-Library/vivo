@@ -66,14 +66,6 @@
 		<mkdir dir="${appbase.dir}" />
 		<mkdir dir="${appbase.dir}/web" />
 		
-		<!-- ================================= 
-		Copy Solr modifications to Vitro solr/
-		================================= -->
-		<copy todir="${vitro.core.dir}/solr">
-		   <fileset dir="solr"/>
-	  	</copy>
-
-
 		<copy todir="${appbase.dir}/web" includeemptydirs="true">
 			<fileset dir="${corebase.dir}/web">
 				<not>
