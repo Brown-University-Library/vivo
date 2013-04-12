@@ -27,7 +27,7 @@ TOMCAT_HOME = properties.getProperty('tomcat.home').strip()
 #TODO: make logging level conditional on the development setting in deploy.properties
 import logging
 logging.basicConfig(
-	level=logging.DEBUG,
+	level=logging.INFO,
 	filename=os.path.join(TOMCAT_HOME, 'logs/vivo-etag-cache.log'),
 	filemode='w', 
 	format='%(asctime)s - %(levelname)s - %(message)s'
