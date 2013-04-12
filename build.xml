@@ -42,8 +42,8 @@
 	<!-- ================================= 
 		Copy Solr modifications to Vitro solr/
 	================================= -->
-	<copy todir="${vitro.core.dir}/solr">
-    	<fileset dir="solr"/>
+	<copy todir="${vitro.core.dir}/solr" overwrite="true">
+        	<fileset dir="solr"/>
   	</copy>
 
 	<!--
