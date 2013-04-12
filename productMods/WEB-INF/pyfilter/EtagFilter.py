@@ -14,16 +14,24 @@ import json
 import urllib
 from urlparse import urlparse
 
-import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-
 #Read VIVO deploy.properties file.
 webinf = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 properties_file = os.path.join(webinf, 'classes/deploy.properties')
 in_stream = FileInputStream(properties_file)
 properties = Properties()
 properties.load(in_stream) 
+
+TOMCAT_HOME = properties.getProperty('tomcat.home').strip()
+
+#setup logging
+#TODO: make logging level conditional on the development setting in deploy.properties
+import logging
+logging.basicConfig(
+	level=logging.DEBUG,
+	filename=os.path.join(TOMCAT_HOME, 'logs/vivo-etag-cache.log'),
+	filemode='w', 
+	format='%(asctime)s - %(levelname)s - %(message)s'
+)
 
 VIVO_SOLR = properties.getProperty('vitro.local.solr.url').strip()
 VIVO_NS = properties.getProperty('Vitro.defaultNamespace').strip()
