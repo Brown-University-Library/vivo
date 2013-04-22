@@ -14,8 +14,7 @@
         <#if isAuthor>
             <#assign coAuthorIcon = "${urls.images}/visualization/coauthorship/co_author_icon.png">
             <#assign coAuthorVisUrl = individual.coAuthorVisUrl()>
-            
-            <div id="vis_container_coauthor">&nbsp;</div>
+            <div class="collaboratorship-link-separator"></div> 
             
             <div id="coauthorship_link_container" class="collaboratorship-link-container">
 				<div class="collaboratorship-icon">
@@ -23,6 +22,7 @@
                 </div>
                 <div class="collaboratorship-link"><a href="${coAuthorVisUrl}" title="co-author network">Co-Author Network</a></div>
             </div>
+	    <div class="collaboratorship-link-separator"></div>
             
         </#if>
         
