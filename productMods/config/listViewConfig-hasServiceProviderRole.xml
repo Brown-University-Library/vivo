@@ -15,30 +15,10 @@
                         ?property
                         ?role
                         ?roleLabel
-                        ?activity ?activityName
-                        ?activityLabel
                         ?dateTimeStart ?dateTimeEnd
                         ?hideThis
         WHERE {
             ?subject ?property ?role
-
-            OPTIONAL {  ?role core:roleRealizedIn ?activity
-                        LET (?activityName := afn:localname(?activity))
-                        OPTIONAL { ?activity rdfs:label ?activityLabel }
-
-                        <collated>
-                        ?activity vitro:mostSpecificType ?subclass
-                        </collated>
-            }
-
-            OPTIONAL {  ?role core:roleContributesTo ?activity
-                        LET (?activityName := afn:localname(?activity))
-                        OPTIONAL { ?activity rdfs:label ?activityLabel }
-
-                        <collated>
-                        ?activity vitro:mostSpecificType ?subclass
-                        </collated>
-            }
 
             OPTIONAL { ?role rdfs:label ?roleLabel }
             OPTIONAL { ?role core:hideFromDisplay ?hideThis }
@@ -50,10 +30,6 @@
                                   ?dateTimeEndValue core:dateTime ?dateTimeEnd
                        }
             }
-      #      NOT EXISTS { ?role core:hideFromDisplay ?hideThis }
-            <critical-data-required>
-            FILTER ( bound(?activity) )
-            </critical-data-required>
         } ORDER BY <collated>?subclass</collated> DESC(?dateTimeEnd) DESC(?dateTimeStart) ?activityLabel ?activityName
     </query-select>
 
@@ -64,53 +40,12 @@
 
         CONSTRUCT {
             ?subject ?property ?role .
-            ?role core:roleContributesTo ?activity .
-            ?activity vitro:mostSpecificType ?subclass .
+            ?role rdfs:label ?roleLabel .
+            ?role vitro:mostSpecificType ?subclass .
         } WHERE {
             ?subject ?property ?role .
-            ?role core:roleContributesTo ?activity .
-            ?activity vitro:mostSpecificType ?subclass
-        }
-    </query-construct>
-
-    <query-construct>
-        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;
-        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-        PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
-
-        CONSTRUCT {
-            ?subject ?property ?role .
-            ?role core:roleRealizedIn ?activity .
-            ?activity vitro:mostSpecificType ?subclass .
-        } WHERE {
-            ?subject ?property ?role .
-            ?role core:roleRealizedIn ?activity .
-            ?activity vitro:mostSpecificType ?subclass
-        }
-    </query-construct>
-
-    <query-construct>
-        PREFIX core: &lt;http://vivoweb.org/ontology/core#&gt;
-        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-        CONSTRUCT {
-            ?subject ?property ?role .
-            ?role ?roleProperty ?roleValue .
-            ?activity rdfs:label ?activityName
-        } WHERE {
-            {
-                ?subject ?property ?role
-            } UNION {
-                ?subject ?property ?role .
-                ?role ?roleProperty ?roleValue
-            } UNION {
-                ?subject ?property ?role .
-                ?role core:roleContributesTo ?activity .
-                ?activity rdfs:label ?activityName
-            } UNION {
-                ?subject ?property ?role .
-                ?role core:roleRealizedIn ?activity .
-                ?activity rdfs:label ?activityName
-            }
+            ?role rdfs:label ?roleLabel .
+            ?role vitro:mostSpecificType ?subclass
         }
     </query-construct>
 
