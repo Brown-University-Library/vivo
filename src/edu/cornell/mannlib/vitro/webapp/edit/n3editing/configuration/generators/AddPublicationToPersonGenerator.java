@@ -781,7 +781,7 @@ public class AddPublicationToPersonGenerator extends VivoBaseGenerator implement
 
     private List<List<String>> getPublicationTypeLiteralOptions() {
         List<List<String>> literalOptions = new ArrayList<List<String>>();
-        literalOptions.add(list("http://vivo.brown.edu/ontology/browncv#Abstract", "Abstract"));
+        literalOptions.add(list("http://vivo.brown.edu/ontology/vivo-brown/Abstract", "Abstract"));
         literalOptions.add(list("http://purl.org/ontology/bibo/AcademicArticle", "Academic Article"));
         literalOptions.add(list("http://purl.org/ontology/bibo/Article", "Article"));
         literalOptions.add(list("http://purl.org/ontology/bibo/AudioDocument", "Audio Document"));
