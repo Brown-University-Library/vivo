@@ -23,6 +23,6 @@
         <@dt.yearIntervalSpan "${statement.dateTimeStart!}" "${statement.dateTimeEnd!}" />
     </#local>
     
-     ${linkedIndividual}  ${dateTime!} 
+     ${linkedIndividual}  ${dateTime!} --- ${statement.hostLabel!} ---
 </#if>
 </#macro>
