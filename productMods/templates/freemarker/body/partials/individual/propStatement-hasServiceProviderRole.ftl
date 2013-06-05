@@ -16,13 +16,17 @@
     </script>
 <#else>
     <#local linkedIndividual>
-        <a href="${profileUrl(statement.uri("role"))}" title="${statement.roleLabel!}">${statement.roleLabel!}</a> 
+        <#if statement.roleLabel?? && statement.hostLabel??>
+            <a href="${profileUrl(statement.uri("role"))}" title="${statement.roleLabel!}">${statement.roleLabel!}. ${statement.hostLabel!}</a>
+        <#else>
+            <a href="${profileUrl(statement.uri("role"))}" title="${statement.roleLabel!}">${statement.roleLabel!}</a>
+        </#if>
     </#local>
-    
+
     <#local dateTime>
         <@dt.yearIntervalSpan "${statement.dateTimeStart!}" "${statement.dateTimeEnd!}" />
     </#local>
-    
-     ${linkedIndividual}  ${dateTime!} --- ${statement.hostLabel!} ---
+
+     ${linkedIndividual} ${dateTime!}
 </#if>
 </#macro>
