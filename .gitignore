@@ -18,6 +18,7 @@ revisionInfo
 
 #Local build script
 rebuild.sh
+rb.sh
 
 #IntelliJ
 .idea/
