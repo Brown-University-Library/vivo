@@ -16,8 +16,8 @@
      next statement -->
 <#macro showRole statement>
     <#local linkedIndividual>
-        <#if statement.artisticWork??>
-            <a href="${profileUrl(statement.uri("artisticWork"))}" title="artistic-work">${statement.artisticWorkLabel!statement.roleLabel}</a>
+        <#if statement.artEvent??>
+            <a href="${profileUrl(statement.uri("artEvent"))}" title="artistic-work">${statement.artEventLabel!statement.roleLabel}</a>
         <#else>
             <#-- This shouldn't happen, but we must provide for it -->
             <a href="${profileUrl(statement.uri("role"))}" title="missing activity">missing activity</a>
@@ -26,12 +26,12 @@
     
     <#local linkedVenue>
         <#if statement.venue??>
-            <a href="${profileUrl(statement.uri("venue"))}" title="venue">${statement.venueLabel!statementRoleLabel}</a>
+            ${statement.venueLabel!statementRoleLabel}
         </#if>
     </#local>
 
     <#local dateTime>
-        <@dt.yearSpan "${statement.dateTime!}" /> 
+        <@dt.yearSpan "${statement.dateLabel!}" /> 
     </#local>
 
     <@s.join [ linkedIndividual, linkedVenue ] /> ${dateTime!}
