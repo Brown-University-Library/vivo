@@ -146,7 +146,7 @@ public class PagedSearchController extends FreemarkerHttpServlet {
             int hitsPerPage = getHitsPerPage( vreq );           
 
             //exclude coauthors at query time.  
-            String queryText = vreq.getParameter(VitroQuery.QUERY_PARAMETER_NAME) + " -classLocalName:Coauthor";  
+            String queryText = vreq.getParameter(VitroQuery.QUERY_PARAMETER_NAME);  
             log.debug("Query text is \""+ queryText + "\""); 
 
 
@@ -155,7 +155,7 @@ public class PagedSearchController extends FreemarkerHttpServlet {
                 return doFailedSearch(badQueryMsg, queryText, format);
             }
                 
-            SolrQuery query = getQuery(queryText, hitsPerPage, startIndex, vreq);            
+            SolrQuery query = getQuery(queryText + " -classLocalName:Coauthor", hitsPerPage, startIndex, vreq);            
             SolrServer solr = SolrSetup.getSolrServer(getServletContext());
             QueryResponse response = null;           
             
