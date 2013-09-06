@@ -1713,3 +1713,12 @@ span.subclassExpandMinus {
     background:url(../images/green_minus_sign.gif) right center no-repeat;
     min-height:18px;
 }
+
+
+/*Full text link */
+a.full-text-link {
+    background-color:#a33646; 
+    color:white;
+    text-decoration:none;
+    font-size:smaller;
+}

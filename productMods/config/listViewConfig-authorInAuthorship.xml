@@ -46,6 +46,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                         ?issue 
                         ?startPage
                         ?endPage
+                        ?doi
                         ?publisher
                         ?locale
                         ?appearsIn
@@ -61,6 +62,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                        OPTIONAL { ?infoResource bibo:issue ?issue }
                        OPTIONAL { ?infoResource bibo:pageStart ?startPage }
                        OPTIONAL { ?infoResource bibo:pageEnd ?endPage }
+                       OPTIONAL { ?infoResource bibo:doi ?doi }
                        OPTIONAL { ?infoResource core:placeOfPublication ?locale }
                        OPTIONAL { ?infoResource bibo:reproducedIn ?appearsInObj .
                                   ?appearsInObj rdfs:label ?appearsIn
