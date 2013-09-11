@@ -29,10 +29,16 @@
             <#if statement.subclass?contains("Article")>
                 <#if statement.journal??>
                     <em>${statement.journal!}</em>.&nbsp;
-                    <#if statement.volume?? && statement.startPage?? && statement.endPage??>
+		    <#if statement.volume?? && statement.issue?? && statement.startPage?? && statement.endPage??>
+                         ${statement.volume!}.${statement.issue!},  ${statement.startPage!}-${statement.endPage!}.
+                    <#elseif statement.volume?? && statement.startPage?? && statement.endPage??>
                         ${statement.volume!}:${statement.startPage!}-${statement.endPage!}.
+		    <#elseif statement.volume?? && statement.issue?? && statement.startPage??>
+		         ${statement.volume!}.${statement.issue!}, ${statement.startPage!}.
                     <#elseif statement.volume?? && statement.startPage??>
                         ${statement.volume!}:${statement.startPage!}.
+		    <#elseif statement.volume?? && statement.issue??>
+		        ${statement.volume!}.${statement.issue!}.
                     <#elseif statement.volume??>
                         ${statement.volume!}.
                     <#elseif statement.startPage?? && statement.endPage??>
