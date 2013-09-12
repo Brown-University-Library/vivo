@@ -42,7 +42,7 @@
                                   ?dateTimeEndValue core:dateTime ?dateTimeEnd  
                        }
             }
-	    OPTIONAL { ?position blocal:positionRank ?sortRank }
+	    OPTIONAL { ?position blocal:positionRank ?positionRank }
             <collated>
             OPTIONAL { ?position vitro:mostSpecificType ?subclass .
                        ?subclass rdfs:subClassOf core:Position 
