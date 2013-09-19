@@ -122,8 +122,18 @@
             <a class="full-text-link" href="http://dx.doi.org/${statement.doi}">full text</a>
         </#if>
     </#local>
+
+    <#local authorList>
+       <#if statement.authorList??>
+           <#if statement.authorList?ends_with('.') == true>
+		${statement.authorList}&nbsp;
+           <#else>
+		${statement.authorList}.&nbsp;
+           </#if>
+       </#if>
+    </#local>
     
 
-    ${resourceTitle} ${citationDetails} <@dt.yearSpan "${statement.dateTime!}" /> ${doi}
+    ${authorList}${resourceTitle} ${citationDetails} <@dt.yearSpan "${statement.dateTime!}" /> ${doi}
 </#if>
 </#macro>

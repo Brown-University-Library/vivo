@@ -36,6 +36,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         PREFIX afn:  &lt;http://jena.hpl.hp.com/ARQ/function#&gt;
         PREFIX bibo: &lt;http://purl.org/ontology/bibo/&gt; 
         PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
               
         SELECT DISTINCT ?subclass 
                         ?authorship
@@ -46,6 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                         ?issue 
                         ?startPage
                         ?endPage
+                        ?authorList
                         ?doi
                         ?publisher
                         ?locale
@@ -62,6 +64,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                        OPTIONAL { ?infoResource bibo:issue ?issue }
                        OPTIONAL { ?infoResource bibo:pageStart ?startPage }
                        OPTIONAL { ?infoResource bibo:pageEnd ?endPage }
+                       OPTIONAL { ?infoResource blocal:authorList ?authorList }
                        OPTIONAL { ?infoResource bibo:doi ?doi }
                        OPTIONAL { ?infoResource core:placeOfPublication ?locale }
                        OPTIONAL { ?infoResource bibo:reproducedIn ?appearsInObj .
