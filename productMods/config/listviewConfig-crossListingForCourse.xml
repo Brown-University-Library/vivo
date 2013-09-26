@@ -4,10 +4,10 @@
 <!-- See guidelines in vitro/doc/list_view_configuration_guidelines.txt -->
 
 <!-- 
-subject is CanonicalCourse, property is hasDepartmentOffering
+subject is CanonicalCourse, property is crossListedAs
 example:
-    'subject': '<http://vivo.brown.edu/individual/dept-42-subj-mcm-crs-1700s-narrative-and-immersion>',
-    'property': '<http://vivo.brown.edu/ontology/vivo-brown/hasDepartmentOffering>'
+    'subject': '<http://vivo.brown.edu/individual/dept-23-subj-econ-crs-1301-economics-of-education-i>',
+    'property': '<http://vivo.brown.edu/ontology/vivo-brown/crossListedAs>'
 -->
 
 <list-view-config>
@@ -16,6 +16,7 @@ example:
         PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
         
         SELECT DISTINCT <collated>?subclass</collated>
                         ?cross
@@ -38,12 +39,14 @@ example:
                     ?subclass vitro:inClassGroup ?classgroup .
                 }
                 </collated> 
+        } ORDER BY <collated>?subclass</collated> ?sbjCode ?courseNumber ?canonLabel
     </query-select>
 
     <query-construct>
         PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+        PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
         
         CONSTRUCT {
             ?subject ?property ?cross .
