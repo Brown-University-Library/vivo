@@ -160,6 +160,10 @@
     <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/offersCanon">
 	<display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-departmentForCourse.xml</display:listViewConfigFile>
     </rdf:Description>
+    
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/crossListedAs">
+	<display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listviewConfig-crossListingForCourse.xml</display:listViewConfigFile>
+    </rdf:Description>
 
     <!--
      ******************************************************************
