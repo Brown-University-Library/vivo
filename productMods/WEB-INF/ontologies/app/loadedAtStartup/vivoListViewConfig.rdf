@@ -156,6 +156,10 @@
     <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/hasDepartmentOffering">
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-offeringForCourse.xml</display:listViewConfigFile>
     </rdf:Description>
+ 
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/offersCanon">
+	<display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-courseForDepartment.xml</display:listViewConfigFile>
+    </rdf:Description>
 
     <!--
      ******************************************************************
