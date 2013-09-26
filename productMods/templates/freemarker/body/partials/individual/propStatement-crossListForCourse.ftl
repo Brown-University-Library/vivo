@@ -14,11 +14,11 @@
      next statement -->
 <#macro showRole statement>
 <#local linkedIndividual>
-    <#if statement.canon??>
-        <a href="${profileUrl(statement.uri("canon"))}" title="class">${statement.sbjCode!} ${statement.courseNumber!}: ${statement.canonLabel!}</a>
+    <#if statement.cross??>
+        <a href="${profileUrl(statement.uri("cross"))}" title="class">${statement.sbjCode!} ${statement.courseNumber!}: ${statement.crossLabel!}</a>
     <#else>
         <#-- This shouldn't happen, but we must provide for it -->
-        <a href="${profileUrl(statement.uri("canon"))}" title="missing activity">missing activity</a>
+        <a href="${profileUrl(statement.uri("cross"))}" title="missing activity">missing activity</a>
     </#if>
 </#local>
 
