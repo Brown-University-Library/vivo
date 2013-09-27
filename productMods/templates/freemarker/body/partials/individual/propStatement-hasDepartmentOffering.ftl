@@ -10,7 +10,7 @@
             <a href="${profileUrl(statement.uri("faculty"))}" title="instructor">${statement.facLabel}</a>
         <#else>
             <#-- This shouldn't happen, but we must provide for it -->
-            <a href="${profileUrl(statement.uri("course"))}" title="missing activity">missing activity</a>
+            <a href="${profileUrl(statement.uri("faculty"))}" title="missing activity">missing activity</a>
         </#if>
     </#local>
     
