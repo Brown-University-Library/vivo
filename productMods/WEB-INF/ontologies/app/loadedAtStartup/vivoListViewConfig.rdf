@@ -213,6 +213,11 @@
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasAssociatedConcept.xml</display:listViewConfigFile>
     </rdf:Description>
 
+    <!-- use the webpage listView for downloadable CVs too. -->
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/cv">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-cvDownload.xml</display:listViewConfigFile>
+    </rdf:Description>    
+
     <!--
      ******************************************************************
      data property custom list views
