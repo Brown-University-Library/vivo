@@ -800,6 +800,7 @@ public class AddPublicationToPersonGenerator extends VivoBaseGenerator implement
         literalOptions.add(list("http://vivoweb.org/ontology/core#Newsletter", "Newsletter"));
         literalOptions.add(list("http://vivoweb.org/ontology/core#NewsRelease", "News Release"));
         literalOptions.add(list("http://purl.org/ontology/bibo/Patent", "Patent"));
+        literalOptions.add(list("http://vivo.brown.edu/ontology/vivo-brown/Poem", "Poem"));
         literalOptions.add(list("http://purl.obolibrary.org/obo/OBI_0000272", "Protocol"));
         literalOptions.add(list("http://purl.org/ontology/bibo/Report", "Report"));
         literalOptions.add(list("http://vivoweb.org/ontology/core#ResearchProposal", "Research Proposal"));

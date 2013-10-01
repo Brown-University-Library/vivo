@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $This file is distributed under the terms of the license in /doc/license.txt$ -->
+
+<!-- See guidelines in vitro/doc/list_view_configuration_guidelines.txt -->
+
+<!-- 
+subject is CanonicalCourse, property is crossListedAs
+example:
+    'subject': '<http://vivo.brown.edu/individual/dept-23-subj-econ-crs-1301-economics-of-education-i>',
+    'property': '<http://vivo.brown.edu/ontology/vivo-brown/crossListedAs>'
+-->
+
+<list-view-config>
+    <query-select>
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
+        
+        SELECT DISTINCT <collated>?subclass</collated>
+                        ?cross
+                        ?crossLabel
+                        ?courseNumber
+                        ?sbjCode
+                        
+        WHERE {
+                        
+                ?subject ?property ?cross .               
+                ?cross a blocal:CanonicalCourse .
+
+                OPTIONAL { ?cross rdfs:label ?crossLabel .}
+                OPTIONAL { ?cross blocal:hasCourseNumber ?courseNumber .
+                           ?cross blocal:hasSubjectCode ?sbjCode .}
+                    
+                <collated>
+                OPTIONAL {
+                    ?cross a ?subclass .
+                    ?subclass vitro:inClassGroup ?classgroup .
+                }
+                </collated> 
+        } ORDER BY <collated>?subclass</collated> ?sbjCode ?courseNumber ?canonLabel
+    </query-select>
+
+    <query-construct>
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+        PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
+        
+        CONSTRUCT {
+            ?subject ?property ?cross .
+            ?cross a blocal:CanonicalCourse .
+            ?cross rdfs:label ?crossLabel .
+            ?cross blocal:hasCourseNumber ?courseNumber .
+            ?cross blocal:hasSubjectCode ?sbjCode .
+            ?cross a ?subclass .
+            ?subclass vitro:inClassGroup ?classgroup .
+        } WHERE {
+            {    
+                ?subject ?property ?cross .
+                ?cross a blocal:CanonicalCourse .
+            } UNION {
+                ?subject ?property ?cross .
+                ?cross a blocal:CanonicalCourse .
+                ?cross rdfs:label ?crossLabel .
+            } UNION {
+                ?subject ?property ?cross .
+                ?cross a blocal:CanonicalCourse .
+                ?cross blocal:hasCourseNumber ?courseNumber .
+                ?cross blocal:hasSubjectCode ?sbjCode .
+            } UNION {
+                ?subject ?property ?cross .
+                ?cross a ?subclass .
+                ?subclass vitro:inClassGroup ?classgroup .
+            }
+        }
+    </query-construct>
+
+    <template>propStatement-crossListForCourse.ftl</template>
+</list-view-config>

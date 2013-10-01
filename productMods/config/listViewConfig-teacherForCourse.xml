@@ -17,22 +17,26 @@
                         ?role
                         ?canon
                         ?canonLabel
+                        ?courseNumber
+                        ?sbjCode
                         ?termList
                         
             WHERE {
                         
-                ?subject ?property ?role
+                ?subject ?property ?role .
+
+                ?role blocal:sampleRole ?canon .
                 
                 OPTIONAL { ?role rdfs:label ?roleLabel }
-
-                OPTIONAL { ?role blocal:sectionsTaught ?sectionCount }
                 
-                OPTIONAL { ?role vivo:roleRealizedIn ?course 
+                OPTIONAL { ?role vivo:roleRealizedIn ?course
                         
                             OPTIONAL { ?course rdfs:label ?courseLabel }
                         
                             OPTIONAL { ?canon a blocal:CanonicalCourse .
-                                       OPTIONAL { ?canon rdfs:label ?canonLabel }
+                                        OPTIONAL { ?canon rdfs:label ?canonLabel .}
+                                        OPTIONAL { ?canon blocal:hasCourseNumber ?courseNumber .
+                                                  ?canon blocal:hasSubjectCode ?sbjCode .}
                                        
                                        {
                                            ?course blocal:departmentOfferingOf ?canon
@@ -44,7 +48,7 @@
 
                             <collated>
                             ?course vitro:mostSpecificType ?subclass .
-                            ?subclass rdfs:subClassOf event:Event 
+                            ?subclass rdfs:subClassOf event:Event
                             </collated>
                            
                 }
@@ -61,13 +65,12 @@
                 }
 
                 OPTIONAL { ?canon blocal:fullTermList ?termList }
-                ?role blocal:sampleRole ?canon
                 
                 <critical-data-required>
                 FILTER ( bound(?course) )
                 </critical-data-required>
         
-            } ORDER BY <collated>?subclass</collated> ?canonLabel
+            } ORDER BY <collated>?subclass</collated> ?sbjCode ?courseNumber ?canonLabel
     </query-select>
  
     <query-construct>
@@ -123,32 +126,103 @@
             ?canon a blocal:CanonicalCourse .
             ?course blocal:departmentOfferingOf ?canon .
             ?canon blocal:hasDepartmentOffering ?course .
-            ?canon rdfs:label ?canonLabel 
+            ?canon rdfs:label ?canonLabel .
+            ?canon blocal:hasCourseNumber ?courseNumber .
+            ?canon blocal:hasSubjectCode ?sbjCode .
         } WHERE {
         
-            {    
+            {
                 ?subject ?property ?role .
                 ?role vivo:roleRealizedIn ?course .
                 ?course blocal:departmentOfferingOf ?canon .
                 ?canon a blocal:CanonicalCourse .
+                NOT EXISTS {?canon blocal:crossListedAs ?cross .}
             } UNION {
                 ?subject ?property ?role .
                 ?role vivo:roleRealizedIn ?course .
                 ?course blocal:departmentOfferingOf ?canon .
                 ?canon a blocal:CanonicalCourse .
                 ?canon rdfs:label ?canonLabel .
+                NOT EXISTS {?canon blocal:crossListedAs ?cross .}
             } UNION {
                 ?subject ?property ?role .
                 ?role vivo:roleRealizedIn ?course .
                 ?canon blocal:hasDepartmentOffering ?course .
-                ?canon a blocal:CanonicalCourse .            
+                ?canon a blocal:CanonicalCourse .
+                NOT EXISTS {?canon blocal:crossListedAs ?cross .}
             } UNION {
                 ?subject ?property ?role .
                 ?role vivo:roleRealizedIn ?course .
                 ?canon blocal:hasDepartmentOffering ?course .
                 ?canon a blocal:CanonicalCourse .
                 ?canon rdfs:label ?canonLabel .
+                NOT EXISTS {?canon blocal:crossListedAs ?cross .}
+            } UNION {
+                ?subject ?property ?role .
+                ?role vivo:roleRealizedIn ?course .
+                ?course blocal:departmentOfferingOf ?canon .
+                ?canon a blocal:CanonicalCourse .
+                ?canon blocal:hasCourseNumber ?courseNumber .
+                ?canon blocal:hasSubjectCode ?sbjCode .
+                NOT EXISTS {?canon blocal:crossListedAs ?cross .}
             }
+        }
+    </query-construct>
+
+    <query-construct>
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+        
+        CONSTRUCT {
+            ?subject ?property ?role .
+            ?canon a blocal:CanonicalCourse .
+            ?course blocal:departmentOfferingOf ?canon .
+            ?canon blocal:hasDepartmentOffering ?course .
+            ?canon rdfs:label ?canonLabel .
+            ?canon blocal:hasCourseNumber ?courseNumber .
+            ?canon blocal:hasSubjectCode ?sbjCode .
+        } WHERE {
+        
+            {
+                ?subject ?property ?role .
+                ?role vivo:roleRealizedIn ?course .
+                ?course blocal:departmentOfferingOf ?canon .
+                ?canon a blocal:CanonicalCourse .
+                ?canon blocal:crossListedAs ?cross .
+            } UNION {
+                ?subject ?property ?role .
+                ?role vivo:roleRealizedIn ?course .
+                ?course blocal:departmentOfferingOf ?canon .
+                ?canon a blocal:CanonicalCourse .
+                ?canon rdfs:label ?canonLabel .
+                ?canon blocal:crossListedAs ?cross .
+            } UNION {
+                ?subject ?property ?role .
+                ?role vivo:roleRealizedIn ?course .
+                ?canon blocal:hasDepartmentOffering ?course .
+                ?canon a blocal:CanonicalCourse .
+                ?canon blocal:crossListedAs ?cross .
+            } UNION {
+                ?subject ?property ?role .
+                ?role vivo:roleRealizedIn ?course .
+                ?canon blocal:hasDepartmentOffering ?course .
+                ?canon a blocal:CanonicalCourse .
+                ?canon rdfs:label ?canonLabel .
+                ?canon blocal:crossListedAs ?cross .
+            } UNION {
+                ?subject ?property ?role .
+                ?role vivo:roleRealizedIn ?course .
+                ?course blocal:departmentOfferingOf ?canon .
+                ?canon a blocal:CanonicalCourse .
+                ?canon blocal:crossListedAs ?cross .
+                ?canon blocal:hasCourseNumber ?courseNumber .
+                ?canon blocal:hasSubjectCode ?sbjCode .
+            }
+                ?subject vivo:personInPosition ?position .
+                ?position blocal:positionRank ?rank .
+                ?position vivo:positionInOrganization ?dept .
+                ?dept blocal:offersCanon ?canon .          
         }
     </query-construct>
 
@@ -173,7 +247,7 @@
                 ?subject ?property ?role .
                 ?role vivo:dateTimeInterval ?dateTimeInterval .
                 ?dateTimeInterval a vivo:AcademicTerm .
-                ?dateTimeInterval rdfs:label ?termLabel 
+                ?dateTimeInterval rdfs:label ?termLabel
             } UNION {
                 ?subject ?property ?role .
                 ?role vivo:dateTimeInterval ?dateTimeInterval .
@@ -193,15 +267,16 @@
         WHERE {
             SELECT ?canon (GROUP_CONCAT(?termLabel; SEPARATOR = ", ") as ?termList)
             WHERE {
-                SELECT ?canon ?termLabel ?startValue
-                WHERE { 
+                SELECT DISTINCT ?canon ?termLabel ?startValue
+                WHERE {
                    ?subject ?property ?role .
                    ?role vivo:roleRealizedIn ?course .
                    ?course blocal:departmentOfferingOf ?canon .
+                   ?canon rdfs:label ?label .
 
-                   ?role vivo:dateTimeInterval ?dateTimeInterval .
+                   ?course vivo:dateTimeInterval ?dateTimeInterval .
                    ?dateTimeInterval vivo:start ?startDate .
-                   ?dateTimeInterval rdfs:label ?termLabel . 
+                   ?dateTimeInterval rdfs:label ?termLabel .
                    ?startDate vivo:dateTime ?startValue
 
                 } ORDER BY ?startValue
@@ -221,7 +296,7 @@
             WHERE {
                 ?subject ?property ?role .
                 ?role vivo:roleRealizedIn ?course .
-                ?course blocal:departmentOfferingOf ?canon 
+                ?course blocal:departmentOfferingOf ?canon
 
             } GROUP BY ?canon
         }

@@ -3,6 +3,13 @@
 
 <!-- See guidelines in vitro/doc/list_view_configuration_guidelines.txt -->
 
+<!-- 
+subject is CanonicalCourse, property is hasDepartmentOffering
+example:
+    'subject': '<http://vivo.brown.edu/individual/dept-42-subj-mcm-crs-1700s-narrative-and-immersion>',
+    'property': '<http://vivo.brown.edu/ontology/vivo-brown/hasDepartmentOffering>'
+-->
+
 <list-view-config>
     <query-select>
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
@@ -40,7 +47,6 @@
             ?subject ?property ?faculty .
             ?faculty rdfs:label ?facLabel .
         } WHERE {
-
             {
                 ?subject ?property ?course .
                 ?course vivo:realizedRole ?role .
@@ -63,14 +69,14 @@
         WHERE {
             SELECT ?faculty (GROUP_CONCAT(?termLabel; SEPARATOR = ", ") as ?termList)
             WHERE {
-                SELECT ?faculty ?termLabel ?startValue
-                WHERE { 
+                SELECT DISTINCT ?faculty ?termLabel ?startValue
+                WHERE {
                     ?subject ?property ?course .
                     ?course vivo:realizedRole ?role .
                     ?role vivo:teacherRoleOf ?faculty .
-                    ?role vivo:dateTimeInterval ?dateTimeInterval .
+                    ?course vivo:dateTimeInterval ?dateTimeInterval .
                     ?dateTimeInterval vivo:start ?startDate .
-                    ?dateTimeInterval rdfs:label ?termLabel . 
+                    ?dateTimeInterval rdfs:label ?termLabel .
                     ?startDate vivo:dateTime ?startValue
 
                 } ORDER BY ?startValue
