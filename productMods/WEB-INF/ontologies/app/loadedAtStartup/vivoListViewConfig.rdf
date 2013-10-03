@@ -218,6 +218,10 @@
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-cvDownload.xml</display:listViewConfigFile>
     </rdf:Description>    
 
+     <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/drrbWebPage">
+	<display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-webpage.xml</display:listViewConfigFile>
+     </rdf:Description>
+
     <!--
      ******************************************************************
      data property custom list views
