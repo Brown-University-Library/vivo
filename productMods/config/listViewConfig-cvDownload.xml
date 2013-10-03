@@ -32,7 +32,7 @@
             ?link ?linkProp ?linkObj
         } WHERE {
             { 
-		?subject blocal:cv ?link
+		?subject ?property ?link
             } UNION {
                 ?subject ?property ?link .
                 ?link ?linkProp ?linkObj
