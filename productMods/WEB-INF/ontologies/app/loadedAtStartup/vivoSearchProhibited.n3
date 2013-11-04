@@ -24,5 +24,6 @@
 	vitroDisplay:excludeClass core:DateTimeInterval ;
 	vitroDisplay:excludeClass core:AcademicDegree ;
 	vitroDisplay:excludeClass core:URLLink ;
+        vitroDisplay:excludeClass blocal:Delegate ; 
 	vitroDisplay:excludeClass <http://vitro.mannlib.cornell.edu/ns/vitro/public#File> ;
 	vitroDisplay:excludeClass <http://vitro.mannlib.cornell.edu/ns/vitro/public#FileByteStream> .
