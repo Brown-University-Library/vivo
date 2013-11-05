@@ -67,12 +67,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <form role="form" id="login-form" action="${formAction}" method="post" name="login-form" />
             <#if externalAuthUrl??>
                 <p class="external-auth"><a class="blue button" href="${externalAuthUrl}" title="external authentication name">${externalAuthName}</a></p>
-<#-- JAM, 11-29-12, REMOVE VIVO Login, requiring Shibboleth
                 <p class="or-auth">or</p>
                 <h3 class="internal-auth" >Log in using your ${siteName} account</h3>
--->
 				</#if>
-<#--
             <label for="loginName">Email</label>
             <input id="loginName" name="loginName" class="text-field focus" type="text" value="${loginName!}" autocapitalize="off" required autofocus />
 
@@ -80,7 +77,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <input id="loginPassword" name="loginPassword" class="text-field" type="password" required />
             
             <p class="submit"><input name="loginForm" class="green button" type="submit" value="Log in"/></p>
--->
 
         </form>
 

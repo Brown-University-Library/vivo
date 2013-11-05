@@ -56,7 +56,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  			</p>
            <p>
  			Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
- 			Visit our <a href="/about">About page</a> for further information.</p>
+ 			Visit our <a href="./about">About page</a> for further information.</p>
 
             <!--
             <p>Browse or search information on people, departments, events, grants, and publications.</p>
