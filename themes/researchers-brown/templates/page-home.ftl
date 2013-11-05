@@ -58,28 +58,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  			Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
  			Visit our <a href="./about">About page</a> for further information.</p>
 
-            <!--
-            <p>Browse or search information on people, departments, events, grants, and publications.</p>
-            -->
-
-            <section id="search-home" role="region">
-                <h3>Search Brown VIVO</h3>
-
-                <fieldset>
-                    <legend>Search form</legend>
-                    <form id="search-home-vivo" action="${urls.search}" method="post" name="search-home" role="search">
-                        <div id="search-home-field">
-                            <input type="text" name="querytext" class="search-home-vivo" value="${querytext!}" />
-                            <input type="submit" value="Search" class="search">
-                        </div>
-                    </form>
-                </fieldset>
-            </section> <!-- #search-home -->
-        </section> <!-- #intro -->
-
         <@widget name="login" />
-
-        <@allClassGroups vClassGroups! />
 
     <#include "footer.ftl">
     </body>
