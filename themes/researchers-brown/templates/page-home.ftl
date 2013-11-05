@@ -47,7 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			Researchers@Brown brings together in one site publicly available information on the people, departments, and
 			activities that collectively make up research and scholarship in all disciplines at Brown. Information in the
 			initial release of Researchers@Brown comes from institutional sources and from data entered by faculty in the
-			Directory of Research and Researchers at Brown (DRR-B). When Researchers@Brown launched publicly it will replace the DRR-B
+			Directory of Research and Researchers at Brown (DRR-B). When Researchers@Brown launches publicly it will replace the DRR-B
 			and existing DRR-B profiles will be automatically redirected to profiles on this site.
  			</p>
 
@@ -57,7 +57,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
            <p>
  			Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
  			Visit our <a href="./about">About page</a> for further information.</p>
-
+      </section>
         <@widget name="login" />
 
     <#include "footer.ftl">
