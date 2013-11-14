@@ -42,7 +42,6 @@
                                   ?dateTimeEndValue core:dateTime ?dateTimeEnd  
                        }
             }
-	    OPTIONAL { ?position blocal:positionRank ?positionRank }
             <collated>
             OPTIONAL { ?position vitro:mostSpecificType ?subclass .
                        ?subclass rdfs:subClassOf core:Position 
@@ -51,7 +50,7 @@
             <critical-data-required>
             FILTER ( bound(?org) )
             </critical-data-required>
-        } ORDER BY ?positionRank 
+        } ORDER BY ?Rank 
     </query-select>
        
     <query-construct>
