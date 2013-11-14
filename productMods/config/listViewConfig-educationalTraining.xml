@@ -13,16 +13,18 @@
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
         
         SELECT DISTINCT <collated> ?subclass </collated>
-                        ?edTraining
+			?edTraining
                         ?trainingType
-                        ?typeName
+			?typeName
+			?label
                         ?org ?orgName
                         ?degreeName ?degreeAbbr
                         ?majorField ?deptOrSchool ?info
                         ?dateTimeStart ?dateTimeEnd
                         ?thesis ?thesisTitle ?thesisTypeLabel
             WHERE {
-                ?subject ?property ?edTraining
+	        ?subject ?property ?edTraining .
+                ?edTraining rdfs:label ?label .
                 OPTIONAL {?edTraining vitro:mostSpecificType ?trainingType .
                           ?trainingType rdfs:subClassOf core:EducationalTraining .
                           ?trainingType rdfs:label ?typeName
@@ -77,7 +79,8 @@
         PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
 
         CONSTRUCT {
-            ?subject ?property ?edTraining .
+	    ?subject ?property ?edTraining .
+	    ?edTraining rdfs:label ?label .
             ?edTraining ?edTrainingProp ?edTrainingValue .
             ?edTraining core:trainingAtOrganization ?org .
             ?org rdfs:label ?orgName .
@@ -89,7 +92,8 @@
             ?thesisType rdfs:label ?thesisTypeLabel
         } WHERE {
             {
-                ?subject ?property ?edTraining .
+		?subject ?property ?edTraining .
+		?edTraining rdfs:label ?label .
             }
             UNION {
                 ?subject ?property ?edTraining .
@@ -148,10 +152,10 @@
 
         CONSTRUCT {
                 ?degree rdfs:label ?degreeName .
-                ?degree core:abbreviation ?degreeAbbr
+		?degree core:abbreviation ?degreeAbbr .
         } WHERE {
             {
-                ?subject ?property ?edTraining .
+	        ?subject ?property ?edTraining .
                 ?edTraining core:degreeEarned ?degree .
                 ?degree rdfs:label ?degreeName
             } UNION {
