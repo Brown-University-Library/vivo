@@ -1262,6 +1262,11 @@ public class SimpleReasoner extends StatementListener {
 					log.debug("The object of this rdf:type assertion has a null URI: " + stmtString(stmt));
 					continue;
 				}
+
+				if ( (stmt.getObject().asResource().getNameSpace()).equals(brownDisplayNamespace) ) {
+					log.debug("Skipping reasoning for resource in display namespace: " + stmtStriang(stmt));
+					continue;
+				}
 				 
 				if (ontClass == null) {
 					if ( !(stmt.getObject().asResource().getNameSpace()).equals(OWL.NS)) {
