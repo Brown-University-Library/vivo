@@ -61,6 +61,7 @@ public class SimpleReasoner extends StatementListener {
 	                                        // asserted and inferred ABox
 	
 	private static final String mostSpecificTypePropertyURI = "http://vitro.mannlib.cornell.edu/ns/vitro/0.7#mostSpecificType";	
+	private static final String brownDisplayNamespace = "http://vivo.brown.edu/ontology/display#";
 	private static final AnnotationProperty mostSpecificType = (ModelFactory.createOntologyModel(OntModelSpec.OWL_MEM)).createAnnotationProperty(mostSpecificTypePropertyURI);
 	
 	// DeltaComputer
