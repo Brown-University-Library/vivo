@@ -43,15 +43,21 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <section id="intro" role="region">
             <h2>Welcome to Brown VIVO (beta)</h2>
             
- 			<p style="background-color:#FFF9D7"> 
-			 The Library and CIS will begin working with individual departments in March 2013 to provide
-			 VIVO training and assistance for faculty and department managers.  A schedule is under development. 
- 			<br /><br />
+ 			<p> 
+			Researchers@Brown brings together in one site publicly available information on the people, departments, and 
+			activities that collectively make up research and scholarship in all disciplines at Brown. Information in the 
+			initial release of Researchers@Brown comes from institutional sources and from data entered by faculty in the 
+			Directory of Research and Researchers at Brown (DRR-B). When Researchers@Brown launche publicly it will replace the DRR-B
+			and existing DRR-B profiles will be automatically redirected to profiles on this site.
+ 			</p>
+ 			
+ 			<p>
+ 		Faculty members not included in the initial launch can request a profile by contacting their dean’s office.
+ 			</p>
            
- 			Please report issues or request help at: <a href="mailto:vivoteam@brown.edu">vivoteam@brown.edu</a>.
- 			Visit our <a href="/help">Help pages</a> for further information.</p>
+ 			Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
+ 			Visit our <a href="/about">About page</a> for further information.</p>
 
-            <p>VIVO is a research-focused discovery tool that enables collaboration among researchers across all disciplines.</p>
             <!--
             <p>Browse or search information on people, departments, events, grants, and publications.</p>
             -->
@@ -72,8 +78,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </section> <!-- #intro -->
         
         <@widget name="login" />
-        
-        <@allClassGroups vClassGroups! />
     
     <#include "footer.ftl">
     </body>

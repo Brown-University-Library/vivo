@@ -47,7 +47,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			Researchers@Brown brings together in one site publicly available information on the people, departments, and
 			activities that collectively make up research and scholarship in all disciplines at Brown. Information in the
 			initial release of Researchers@Brown comes from institutional sources and from data entered by faculty in the
-			Directory of Research and Researchers at Brown (DRR-B). When Researchers@Brown launched publicly it will replace the DRR-B
+			Directory of Research and Researchers at Brown (DRR-B). When Researchers@Brown launches publicly it will replace the DRR-B
 			and existing DRR-B profiles will be automatically redirected to profiles on this site.
  			</p>
 
@@ -57,29 +57,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
            <p>
  			Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
  			Visit our <a href="./about">About page</a> for further information.</p>
-
-            <!--
-            <p>Browse or search information on people, departments, events, grants, and publications.</p>
-            -->
-
-            <section id="search-home" role="region">
-                <h3>Search Brown VIVO</h3>
-
-                <fieldset>
-                    <legend>Search form</legend>
-                    <form id="search-home-vivo" action="${urls.search}" method="post" name="search-home" role="search">
-                        <div id="search-home-field">
-                            <input type="text" name="querytext" class="search-home-vivo" value="${querytext!}" />
-                            <input type="submit" value="Search" class="search">
-                        </div>
-                    </form>
-                </fieldset>
-            </section> <!-- #search-home -->
-        </section> <!-- #intro -->
-
+      </section>
         <@widget name="login" />
-
-        <@allClassGroups vClassGroups! />
 
     <#include "footer.ftl">
     </body>

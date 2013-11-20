@@ -46,7 +46,7 @@
         </#if>
     </#local>
 
-    <@s.join [ degree, linkedIndividual!, statement.deptOrSchool! ] /> <@dt.yearIntervalSpan "${statement.dateTimeStart!}" "${statement.dateTimeEnd!}" false/> 
+    <@s.join [ statement.label!, linkedIndividual!, statement.deptOrSchool! ] /> <@dt.yearIntervalSpan "${statement.dateTimeStart!}" "${statement.dateTimeEnd!}" false/> 
     ${linkedThesis!}
 
 </#macro>
