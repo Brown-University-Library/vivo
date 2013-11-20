@@ -1265,7 +1265,7 @@ public class SimpleReasoner extends StatementListener {
 				}
 
 				if ( (stmt.getObject().asResource().getNameSpace()).equals(brownDisplayNamespace) ) {
-					log.debug("Skipping reasoning for resource in display namespace: " + stmtStriang(stmt));
+					log.debug("Skipping reasoning for resource in display namespace: " + stmtString(stmt));
 					continue;
 				}
 				 
