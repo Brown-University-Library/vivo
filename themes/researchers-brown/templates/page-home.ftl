@@ -34,7 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <head>
         <#include "head.ftl">
         <!-- scripts for Google Ajax Feed API -->
-        <script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAl69hMrMPX0hsLyE93DVyTxQBzqpr8JnUHHa00_iYLABa7Jl01hTPFSyvAN6p4kjiYtcotcoxMszxSw"></script>
+        <script type="text/javascript" src="//www.google.com/jsapi?key=ABQIAAAAl69hMrMPX0hsLyE93DVyTxQBzqpr8JnUHHa00_iYLABa7Jl01hTPFSyvAN6p4kjiYtcotcoxMszxSw"></script>
 
         <script type="text/javascript">
         google.load("feeds", "1") //Load Google Ajax Feed API (version 1)
@@ -68,7 +68,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           }
           li.rss-item {
             color: #ffffff;
-            list-style-image:url(/vivo/./themes/researchers-brown/images/bullet-orange.png);
+            list-style-image:url(./themes/researchers-brown/images/bullet-orange.png);
             #list-style-type: none;
             margin-bottom: 1.0em;
             margin-left: 1.6em;
@@ -109,9 +109,9 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           <!-- <p><img src="./themes/researchers-brown/images/news_items.jpg"></p> -->
           <table class="news-item">
             <tr>
-             <td><img src=./themes/researchers-brown/./themes/researchers-brown/images/spacer.gif" width="25" height="1" border="0" alt="" /></td>
-             <td><img src=./themes/researchers-brown/images/spacer.gif" width="140" height="1" border="0" alt="" /></td>
-             <td><img src=./themes/researchers-brown/images/spacer.gif" width="18" height="1" border="0" alt="" /></td>
+             <td><img src="./themes/researchers-brown/images/spacer.gif" width="25" height="1" border="0" alt="" /></td>
+             <td><img src="./themes/researchers-brown/images/spacer.gif" width="140" height="1" border="0" alt="" /></td>
+             <td><img src="./themes/researchers-brown/images/spacer.gif" width="18" height="1" border="0" alt="" /></td>
              <td><img src="./themes/researchers-brown/images/spacer.gif" width="140" height="1" border="0" alt="" /></td>
              <td><img src="./themes/researchers-brown/images/spacer.gif" width="19" height="1" border="0" alt="" /></td>
              <td><img src="./themes/researchers-brown/images/spacer.gif" width="141" height="1" border="0" alt="" /></td>
