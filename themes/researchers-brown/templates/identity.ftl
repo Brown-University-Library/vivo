@@ -51,15 +51,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                     <li>
                         <ul class="dropdown">
                             <li id="user-menu"><a href="#" title="user">${user.loginName}</a>
-                                <ul class="sub_menu">
-                                     <#if user.hasProfile>
-                                         <li role="listitem"><a href="${user.profileUrl}" title="my profile">My profile</a></li>
-                                     </#if>
-                                     <#if urls.myAccount??>
-                                         <li role="listitem"><a href="${urls.myAccount}" title="my account">My account</a></li>
-                                     </#if>
-                                     <li role="listitem"><a href="${urls.logout}" title="log out">Log out</a></li>
-                                </ul>
                             </li>
                          </ul>
                      </li>
@@ -69,7 +60,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 ${scripts.add('<script type="text/javascript" src="${urls.base}/js/userMenu/userMenuUtils.js"></script>')}
                 
             <#else>
-                <li role="listitem"><a class="log-out" title="log in to manage this site" href="${urls.login}">Log in</a></li>
+                <li role="listitem"><a class="log-out" title="log in to manage your profile" href="/manager">Manage your profile</a></li>
             </#if>
         </ul>
         

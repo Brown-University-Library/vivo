@@ -40,7 +40,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
         <#include "menu.ftl">
 
-        <section id="intro" role="region">
             <h2>Welcome to Researchers@Brown</h2>
 
  			<p>
@@ -57,8 +56,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
            <p>
  			Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
  			Visit our <a href="./about">About page</a> for further information.</p>
-      </section>
-        <@widget name="login" />
 
     <#include "footer.ftl">
     </body>
