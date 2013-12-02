@@ -1723,3 +1723,14 @@ a.full-text-link {
     font-size:smaller;
     padding: 0px 2px 0px 2px;
 }
+
+#about table {
+    width:100%;
+    border-collapse:collapse;
+}
+#about td, th{
+border:1px solid black;
+}
+#about td {
+padding:5px;
+}

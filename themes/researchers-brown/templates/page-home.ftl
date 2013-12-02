@@ -133,7 +133,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           </table>
 
                 <p>
-                Researchers@Brown brings together in one site publicly available information on the people, departments, and
+                Researchers@Brown brings together, in one site, publicly available information on the people, departments, and
                 activities that collectively make up research and scholarship in all disciplines at Brown. 
 
                 <p>
@@ -141,7 +141,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 </p>
                      <p>
                 Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
-                Visit our <a href="./about">Help</a> pages for further information.</p>
+                Visit our <a href="./help">Help</a> pages for further information.</p>
 
         </section>
 
