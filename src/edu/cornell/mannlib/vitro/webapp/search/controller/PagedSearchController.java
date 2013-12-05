@@ -350,7 +350,9 @@ public class PagedSearchController extends FreemarkerHttpServlet {
                     VClassGroup vcg = grpDao.getGroupByURI( ct.getName() );
                     if( vcg == null ){
                         log.debug("could not get classgroup for URI " + ct.getName());
-                    }else{
+                    } else if ( vcg.getURI().equals("http://vivo.brown.edu/individual/vitroClassGroupBrownOUs") ) {
+                        continue;
+                    } else{
                         classgroups.add(vcg);
                         cgURItoCount.put(vcg.getURI(),  ct.getCount());
                     }                    
