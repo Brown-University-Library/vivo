@@ -50,7 +50,7 @@
             <critical-data-required>
             FILTER ( bound(?org) )
             </critical-data-required>
-        } ORDER BY ?Rank 
+        } ORDER BY ?rank
     </query-select>
        
     <query-construct>
