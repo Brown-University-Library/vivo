@@ -91,11 +91,16 @@
                     </#if>
                 </h1>
             </#if>
-
+	     
             <#-- Positions -->
             <#assign positions = propertyGroups.pullProperty("${core}personInPosition")!>
             <#if positions?has_content> <#-- true when the property is in the list, even if not populated (when editing) -->
-                <@p.objectPropertyListing positions editable />
+		<h2 id="brown-affiliations">Brown Affiliations</a></h2>
+		<ul>
+		    <#list positions.statements as pos>
+			<li style="display:inline"><a href="${pos.org}">${pos.orgName}</a><#if pos_has_next>,</#if></li>
+		    </#list>
+		</ul>
             </#if>
         </header>
 
