@@ -71,7 +71,7 @@
 		    <#assign middleName = propertyGroups.pullProperty("${core}middleName")!>
 		    <#assign lastName = propertyGroups.pullProperty("${foaf}lastName")!>
 		    <#if firstName.statements?has_content && lastName.statements?has_content>
-			<span class="fn">${firstName.statements[0].value!}<#if middleName.statements?has_content> ${middleName.statements[0].value!}</#if> ${lastName.statements[0].value!}</span>
+			<span class="fn">${firstName.statements[0].value!}<#if middleName.statements?has_content> ${middleName.statements[0].value!}<#if middleName.statements[0].value?length < 3>.</#if> </#if> ${lastName.statements[0].value!}</span>
 		    <#else>
 			<span class="fn"><@p.label individual editable labelCount/></span>
 		    </#if>
