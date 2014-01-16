@@ -3,6 +3,7 @@
 <#-- Individual profile page template for foaf:Person individuals -->
 <#include "individual-setup.ftl">
 <#import "lib-vivo-properties.ftl" as vp>
+<#assign blocal = "http://vivo.brown.edu/ontology/vivo-brown/">
 <#if !labelCount??>
     <#assign labelCount = 0 >
 </#if>
@@ -29,7 +30,6 @@
         <#-- Links -->
         <@vp.webpages propertyGroups editable "individual-urls-people" />
 
-        <#assign blocal = "http://vivo.brown.edu/ontology/vivo-brown/">
         <#assign cvLink = propertyGroups.pullProperty("${blocal}cv")!>
         <#if cvLink?has_content>
             <ul id="cvLink">
@@ -92,16 +92,17 @@
                 </h1>
             </#if>
 	     
-            <#-- Positions -->
-            <#assign positions = propertyGroups.pullProperty("${core}personInPosition")!>
-            <#if positions?has_content> <#-- true when the property is in the list, even if not populated (when editing) -->
-		<h2 id="brown-affiliations">Brown Affiliations</a></h2>
+	    <#-- Affiliations -->
+	    <#assign affiliation = propertyGroups.pullProperty("${blocal}hasAffiliation")!>
+	    <#if affiliation?has_content>
+		<h2 id="brown-affiliations">Brown Affiliations</h2>
 		<ul>
-		    <#list positions.statements as pos>
-			<li style="display:inline"><a href="${pos.org}">${pos.orgName}</a><#if pos_has_next>,</#if></li>
+		    <#list affiliation.statements as af>
+			<li><a href="${profileUrl(af.org)}">${af.orgName}</a><#if af_has_next>,</#if></li>
 		    </#list>
 		</ul>
-            </#if>
+	    </#if>
+
         </header>
 
         <#-- Overview -->
