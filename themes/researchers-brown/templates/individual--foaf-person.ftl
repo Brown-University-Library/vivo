@@ -92,22 +92,23 @@
                 </h1>
             </#if>
 	     
-	    <#-- Affiliations -->
-	    <#assign affiliation = propertyGroups.pullProperty("${blocal}hasAffiliation")!>
-	    <#if affiliation?has_content>
-		<h2>Brown Affiliations</h2>
-		<ul id="affiliations">
-		    <#list affiliation.statements as af>
-			<li><a href="${profileUrl(af.org)}">${af.orgName}</a><#if af_has_next>,</#if></li>
-		    </#list>
-		</ul>
-		<br/>
-	    </#if>
-
         </header>
 
         <#-- Overview -->
         <#include "individual-overview.ftl">
+
+
+        <#-- Affiliations -->
+        <#assign affiliation = propertyGroups.pullProperty("${blocal}hasAffiliation")!>
+        <#if affiliation?has_content>
+            <h2>Brown Affiliations</h2>
+            <ul id="affiliations">
+                <#list affiliation.statements as af>
+                    <li><a href="${profileUrl(af.org)}">${af.orgName}</a></li>
+                </#list>
+            </ul>
+        </#if>
+
 
         <#-- Research Areas -->
         <#assign researchAreas = propertyGroups.pullProperty("${core}hasResearchArea")!>
