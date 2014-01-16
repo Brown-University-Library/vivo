@@ -1734,6 +1734,7 @@ border:1px solid black;
 #about td {
 padding:5px;
 }
-#brown-affiliations li {
+
+#affiliations li {
     display: inline
 }
