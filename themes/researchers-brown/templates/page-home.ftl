@@ -131,18 +131,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
              <td><img src="./themes/researchers-brown/images/spacer.gif" width="1" height="169" border="0" alt="" /></td>
             </tr>
           </table>
-
-                <p>
-                Researchers@Brown brings together, in one site, publicly available information on the people, departments, and
-                activities that collectively make up research and scholarship in all disciplines at Brown. 
-
-                <p>
-              Faculty members not included in the initial launch can request a profile by contacting their Dean's office.
-                </p>
-                     <p>
-                Please report issues or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
-                Visit our <a href="./help">Help</a> pages for further information.</p>
-
         </section>
 
         <section id="login" class="news-item-box">
@@ -184,6 +172,25 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           </script>      
         
          </section>
+        <p>Researchers@Brown brings together, in one site, publicly available information on the people, departments, and activities that collectively make up research and scholarship in all disciplines at Brown.</p>
+            <p>The Spring 2014 initial release of Researchers@Brown contains data from institutional sources and verbatim content from faculty profiles in the Directory of Research and Researchers at Brown (DRRB), the precursor system. Faculty members who do not have a profile can request one by contacting the appropriate <a href="https://vivo.brown.edu/faq/">faculty affairs office</a>.
+            </p>
+
+            <p>
+            Improvements planned for the coming months include:
+            <ul style="list-style:disc;margin-left:50px;">
+            <li>Links to full text of publications when available</li>
+            <li>An easy editor for publications and publication categories</li>
+            <li>The ability to simply enter a DOI to add publication data</li>
+            <li>An alert service for easily adding new publications</li>
+            <li>More robust search and discovery capabilities</li>
+            <li>Improvements in the site's visual presentation</li>  
+            </ul>
+            </p>
+           <p>
+            Please provide feedback or request help by contacting <a href="mailto:vivoteam@brown.edu">Margaret_Houska@brown.edu</a>.
+            Visit our <a href="./about">Help</a> pages for further information.</p> 
+
 
     <#include "footer.ftl">
     </body>
