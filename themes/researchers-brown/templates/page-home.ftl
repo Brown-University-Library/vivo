@@ -104,33 +104,6 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <#include "menu.ftl">
 
         <section id="intro" role="region">
-            <h2><span class="researchers-title">Welcome to Researchers@Brown</span></h2>
-            
-          <!-- <p><img src="./themes/researchers-brown/images/news_items.jpg"></p> -->
-          <table class="news-item">
-            <tr>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="25" height="1" border="0" alt="" /></td>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="140" height="1" border="0" alt="" /></td>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="18" height="1" border="0" alt="" /></td>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="140" height="1" border="0" alt="" /></td>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="19" height="1" border="0" alt="" /></td>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="141" height="1" border="0" alt="" /></td>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="1" height="1" border="0" alt="" /></td>
-            </tr>
-
-            <tr>
-            <td><img src="./themes/researchers-brown/images/spacer.gif" width="1" height="169" border="0" alt="" /></td>
-             <td><a href="http://news.brown.edu/pressreleases/2013/11/schoolcrime" target="_blank">
-             <img name="news_item_left" src="./themes/researchers-brown/images/news_item_left.jpg" width="140" height="169" border="0" id="news_item_left" alt="School violence lowers test scores, not grades" title="School violence lowers test scores, not grades" /></a></td>
-                <td><img src="./themes/researchers-brown/images/spacer.gif" width="1" height="169" border="0" alt="" /></td>
-             <td><a href="http://www.americahttp://www.americanscientist.org/issues/pub/2013/5/blood-in-motionnscientist.org/issues/pub/2013/5/blood-in-motion">
-             <img name="news_item_middle" src="./themes/researchers-brown/images/news_item_middle.jpg" width="140" height="169" border="0" id="news_item_middle" alt="Blood in Motion" title="Blood in Motion"/></a></td>
-                <td><img src="./themes/researchers-brown/images/spacer.gif" width="1" height="169" border="0" alt="" /></td>
-             <td><a href="http://www.brown.edu/research/pembroke-center/research/seed-grants-collaborative-interdisciplinary-research" target="_blank">
-             <img name="news_item_right" src="./themes/researchers-brown/images/news_item_right.jpg" width="141" height="169" border="0" id="news_item_right" alt="Pembroke Seed Grants for Collaborative Interdisciplinary Research" title="Pembroke Seed Grants for Collaborative Interdisciplinary Research" /></a></td>
-             <td><img src="./themes/researchers-brown/images/spacer.gif" width="1" height="169" border="0" alt="" /></td>
-            </tr>
-          </table>
         </section>
 
         <section id="login" class="news-item-box">
@@ -172,6 +145,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           </script>      
         
          </section>
+        <h2><span class="researchers-title">Welcome to Researchers@Brown</span></h2>
         <p>Researchers@Brown brings together, in one site, publicly available information on the people, departments, and activities that collectively make up research and scholarship in all disciplines at Brown.</p>
             <p>The Spring 2014 initial release of Researchers@Brown contains data from institutional sources and verbatim content from faculty profiles in the Directory of Research and Researchers at Brown (DRRB), the precursor system. Faculty members who do not have a profile can request one by contacting the appropriate <a href="https://vivo.brown.edu/faq/">faculty affairs office</a>.
             </p>
