@@ -49,7 +49,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <ul id="footer-nav" role="list">
             <li role="listitem"><a href="${urls.about}" title="about">About</a></li>
             <#if urls.contact??>
-                <li role="listitem"><a href="${urls.contact}" title="contact us">Contact Us</a></li>
+                <li role="listitem"><a href="https://docs.google.com/a/brown.edu/forms/d/1H_LzEHRzpxv3OY266RjSwpAMwVuTEUFyNEgMPcZ4NiA/viewform" title="contact us">Contact Us</a></li>
             </#if> 
             <!--
             <li role="listitem"><a href="http://www.vivoweb.org/support" target="blank" title="support">Support</a></li>
