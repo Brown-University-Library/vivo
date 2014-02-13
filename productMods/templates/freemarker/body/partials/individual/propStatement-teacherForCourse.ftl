@@ -14,12 +14,8 @@
      next statement -->
 <#macro showRole statement>
 <#local linkedIndividual>
-    <#if statement.canon??>
-        <a href="${profileUrl(statement.uri("canon"))}" title="class">${statement.sbjCode!} ${statement.courseNumber!}: ${statement.canonLabel!}</a>
-        . ${statement.termList}.
-    <#else>
-        <#-- This shouldn't happen, but we must provide for it -->
-        <a href="${profileUrl(statement.uri("canon"))}" title="missing activity">missing activity</a>
+    <#if statement.course??>
+        <a href="${profileUrl(statement.uri("course"))}" title="class">${statement.label!}</a>
     </#if>
 </#local>
 
