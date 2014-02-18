@@ -18,9 +18,10 @@ example:
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
         PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
-        SELECT DISTINCT <collated>?dateTimeInterval</collated>
-                        ?course
+        
+        SELECT DISTINCT ?course
                         ?label
+                        ?termList
                         
             WHERE {
                         
@@ -28,19 +29,13 @@ example:
 
                 ?course rdfs:label ?label .
 
-                <collated>
-                ?course vivo:dateTimeInterval ?dateTimeInterval .
-                ?dateTimeInterval a vivo:AcademicTerm .
-                ?dateTimeInterval rdfs:label ?termLabel .
-                </collated>
-                ?dateTimeInterval vivo:start ?startDate .
-                ?startDate vivo:dateTime ?startValue .
+                OPTIONAL {?course blocal:fullTermList ?termList .}
                 
                 <critical-data-required>
                 FILTER ( bound(?course) )
                 </critical-data-required>
         
-            } ORDER BY <collated>?dateTimeInterval</collated> DESC(?startValue) ASC(?label) 
+            }
     </query-select>
  
     <query-construct>
@@ -54,21 +49,32 @@ example:
         CONSTRUCT {
             ?subject ?property ?course .
             ?course rdfs:label ?label .
-            ?course vivo:dateTimeInterval ?dateTimeInterval .
-            ?dateTimeInterval a vivo:AcademicTerm .
-            ?dateTimeInterval rdfs:label ?termLabel .
-            ?dateTimeInterval vivo:start ?startDate .
-            ?startDate vivo:dateTime ?startValue .
 
         } WHERE {
 
             ?subject ?property ?course .
             ?course rdfs:label ?label .
-            ?course vivo:dateTimeInterval ?dateTimeInterval .
-            ?dateTimeInterval a vivo:AcademicTerm .
-            ?dateTimeInterval rdfs:label ?termLabel .
-            ?dateTimeInterval vivo:start ?startDate .
-            ?startDate vivo:dateTime ?startValue .
+        }
+    </query-construct>
+
+    <query-construct>
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+
+        CONSTRUCT {?course blocal:fullTermList ?termList .}
+        WHERE {
+            SELECT ?course (GROUP_CONCAT(?termLabel; SEPARATOR = ", ") as ?termList)
+            WHERE {
+                SELECT ?course ?termLabel ?startValue
+                WHERE {
+                    ?subject ?property ?course .
+                    ?course vivo:dateTimeInterval ?dateTimeInterval .
+                    ?dateTimeInterval rdfs:label ?termLabel .
+                    ?dateTimeInterval vivo:start ?startDate .
+                    ?startDate vivo:dateTime ?startValue
+                } ORDER BY ?startValue
+            } GROUP BY ?course 
         }
     </query-construct>
     

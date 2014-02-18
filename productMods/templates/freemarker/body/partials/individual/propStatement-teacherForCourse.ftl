@@ -15,7 +15,7 @@
 <#macro showRole statement>
 <#local linkedIndividual>
     <#if statement.course??>
-        <a href="${profileUrl(statement.uri("course"))}" title="class">${statement.label!}</a>
+        ${statement.label!} ${statement.termList!}
     </#if>
 </#local>
 

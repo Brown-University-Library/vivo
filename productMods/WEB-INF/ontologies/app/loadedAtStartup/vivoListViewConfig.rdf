@@ -141,7 +141,7 @@
      ****************************************************************** 
     -->
 
-    <rdf:Description rdf:about="http://vivoweb.org/ontology/core#hasTeacherRole">
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/teacherFor">
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-teacherForCourse.xml</display:listViewConfigFile>
     </rdf:Description>
 
