@@ -3,8 +3,10 @@
 $(document).ready(function(){
     
     // "more"/"less" HTML truncator for showing more or less content in data property core:overview
-    $('.overview-value').truncate({max_length: 500});
-    $('#researchStatementList').truncate({max_length: 500});
+    shortProps = ['.overview-value', '#scholarlyWorkList', '#fundedResearchList', '#teachingOverviewList', '#researchOverviewList', '#researchStatementList'];
+    $(shortProps).each(function( index, selector ) {
+	$(selector).truncate({max_length: 500});
+    });
     
     $.fn.exists = function () {
         return this.length !== 0;
