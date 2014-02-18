@@ -6,8 +6,6 @@
      is also used to generate the property statement during a deletion.  
  -->
 
-<#import "lib-datetime.ftl" as dt>
-
 <@showRole statement />
 
 <#-- Use a macro to keep variable assignments local; otherwise the values carry over to the
@@ -15,7 +13,7 @@
 <#macro showRole statement>
 <#local linkedIndividual>
     <#if statement.course??>
-        ${statement.label!} ${statement.termList!}
+        ${statement.label!}.  ${statement.termList!}.
     </#if>
 </#local>
 
