@@ -64,6 +64,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
           p.more-news {
             float:right;
+            margin-top:-20px;
+            font-size: .85em;
           }
 
           a.more-news {
@@ -71,15 +73,14 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           }
           li.rss-item {
             color: #ffffff;
-            list-style-image:url(./themes/researchers-brown/images/bullet-orange.png);
-            #list-style-type: none;
+            /*list-style-image:url(./themes/researchers-brown/images/bullet-orange.png);*/
             margin-bottom: 1.0em;
             margin-left: 1.6em;
           }
 
           a.rss-item {
-            font-size: 1em;
-            line-height: 1.8em;
+            font-size: .90em;
+            line-height: 1.0em;
             color: #ffffff;
             text-decoration: none;
             border-bottom: 1px dotted ##645e50;
@@ -87,11 +88,10 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
           }
 
           a:hover.rss-item {
-            #font-size: 1.1em;
-            line-height: 1.8em;
+            font-size: .90em;
+            line-height: 1.0em;
             color: #645e50;
             text-decoration: none;
-            #border-bottom: 1px dotted #c81700;
             font-weight: normal;
           }
 
@@ -156,7 +156,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
                      var feedcontainer=document.getElementById("feeddiv")
                      var feedurl="http://www.brown.edu/research/news/rss"
-                     var feedlimit=5
+                     var feedlimit=3
                      var rssoutput="<ul>"
 
                      function rssfeedsetup(){
@@ -169,7 +169,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                      if (!result.error){
                      var thefeeds=result.feed.entries
                      for (var i=0; i<thefeeds.length; i++)
-                     rssoutput+="<li class='rss-item'><a class='rss-item' href='" + thefeeds[i].link + "'>" + thefeeds[i].title + "</a></li>"
+                     rssoutput+="<li class='rss-item'>&#187;<a class='rss-item' href='" + thefeeds[i].link + "'>" + thefeeds[i].title + "</a></li>"
                      rssoutput+="<p class='more-news'>&#187; <a href='http://www.brown.edu/research/news' class='more-news'>View More</a>&nbsp;&nbsp;&nbsp;</p></ul>"
                      feedcontainer.innerHTML=rssoutput
                      }
