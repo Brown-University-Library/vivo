@@ -42,7 +42,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </script>
         <style type="text/css">
           #wrapper-content {
-            min-height: 850px;
+            min-height: 650px;
           }
           .researchers-title {
             color:#c00404;
