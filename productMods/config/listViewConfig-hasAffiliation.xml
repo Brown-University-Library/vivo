@@ -28,6 +28,7 @@
         WHERE {
 	    ?subject ?property ?org .
 	    ?org rdfs:label ?orgName .
+        FILTER ( ?org != &lt;http://vivo.brown.edu/individual/org-brown-univ&gt; )
 	}
     </query-construct>
     <template>propStatement-hasAffiliation.ftl</template>
