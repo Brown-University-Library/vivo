@@ -45,6 +45,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                      </#if>
                 -->
                 <#if user.hasSiteAdminAccess>
+                    <li role="listitem"><a href="${urls.index}" title="index">Index</a></li>
                     <li role="listitem"><a href="${urls.siteAdmin}" title="site admin">Site Admin</a></li>
                 </#if>
                     <li>
