@@ -142,7 +142,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             </ul>
             </p>
            <p>
-            Please provide feedback or request help by contacting <a href="mailto:vivoteam@brown.edu">vivoteam@brown.edu</a>.
+            Please provide feedback or request help by contacting <a href="mailto:researchers@brown.edu">researchers@brown.edu</a>.
             Visit our <a href="./about">Help</a> pages for further information.</p>
          </section>
          <section id="login" class="news-item-box">
