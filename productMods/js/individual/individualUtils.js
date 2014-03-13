@@ -59,6 +59,15 @@ $(document).ready(function(){
     
     var $subPropList = $('.subclass-property-list');
     $subPropList.each(function() {
+        //don't do the show more for organizations.
+        try {
+            if ($(this).parents('ul').attr('id') == "organizationForPositionList") {
+                return;
+            }
+        }
+        catch (err) {
+            //
+        }
         var $additionalItems = $(this).find('li:gt(4)');
         if ( $additionalItems.exists() ) {
             // create container for additional elements
