@@ -35,7 +35,7 @@ example:
                 FILTER ( bound(?course) )
                 </critical-data-required>
         
-            }
+            } ORDER BY ?label
     </query-select>
  
     <query-construct>
