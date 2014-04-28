@@ -20,7 +20,7 @@
                 OPTIONAL { ?edTraining core:trainingAtOrganization ?org .
                            ?org rdfs:label ?orgName . }
                 OPTIONAL { ?edTraining blocal:degreeDate ?date .}
-        } ORDER BY DESC(?degree) DESC(?degreeDate) ?orgName
+        } ORDER BY DESC(?degreeDate) ?orgName
     </query-select>
 
     <query-construct>
