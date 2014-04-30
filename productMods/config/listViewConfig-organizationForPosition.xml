@@ -22,7 +22,7 @@
             ?subject ?property ?position .
             ?position vivo:positionForPerson ?person .
             ?person rdfs:label ?personName .
-            ?position blocal:positionLabel ?positionTitle .
+            ?position rdfs:label ?positionTitle .
             OPTIONAL { ?position vivo:hideFromDisplay ?hideThis }
             <collated>
             OPTIONAL { ?position vitro:mostSpecificType ?subclass .
@@ -33,26 +33,6 @@
             </critical-data-required>
         } ORDER BY <collated> ?subclass </collated> ?personName
     </query-select>
-
-    <query-construct>
-      PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
-      PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
-      PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
-      #TL: This handles faculty with multiple positions in the same department. Titles will be combined for display.
-
-      CONSTRUCT {
-        ?tempPosition blocal:positionLabel ?positionTitle .
-      }
-      WHERE {
-        SELECT ?person (GROUP_CONCAT(?title; SEPARATOR = ", ") as ?positionTitle) (SAMPLE(?position) as ?tempPosition)
-        WHERE {
-          ?subject ?property ?position .
-          ?position vivo:positionForPerson ?person .
-          ?position rdfs:label ?title .
-        }
-        GROUP BY ?person
-      }
-    </query-construct>
 
     <query-construct>
         PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
