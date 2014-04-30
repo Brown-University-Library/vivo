@@ -1,0 +1,16 @@
+User-agent: *
+Crawl-delay: 30
+Disallow: /
+Allow: /display
+Allow: /individual
+Allow: /home
+
+User-agent: MJ12bot
+User-agent: moget
+User-agent: ichiro
+User-agent: sogou spider
+User-agent: YoudaoBot
+User-agent: NaverBot
+User-agent: Yeti
+User-agent: FunWebProducts
+Disallow: /
