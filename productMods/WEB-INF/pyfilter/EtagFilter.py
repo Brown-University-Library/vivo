@@ -46,8 +46,13 @@ class EtagFilter(Filter):
                 'fields': ETAG_FIELD}
         solr_query_url = VIVO_SOLR + '/' + params
         logging.debug("Solr URL: " + solr_query_url)
-        solr_handle = urllib.urlopen(solr_query_url)
-        solr_resp = json.load(solr_handle)
+        try:
+            solr_handle = urllib.urlopen(solr_query_url)
+            solr_resp = json.load(solr_handle)
+        except Exception, e:
+            logging.error("Failed to connect to Solr with:")
+            logging.error(e)
+            return
         try:
             solr_doc = solr_resp['response']['docs'][0]
         except IndexError:
