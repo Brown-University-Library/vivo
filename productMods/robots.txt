@@ -4,6 +4,7 @@ Disallow: /
 Allow: /display
 Allow: /individual
 Allow: /home
+Allow: /$
 
 User-agent: MJ12bot
 User-agent: moget
