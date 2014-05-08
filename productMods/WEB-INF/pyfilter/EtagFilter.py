@@ -9,6 +9,7 @@ from javax.servlet import Filter
 from javax.servlet.http import HttpServletResponse
 
 #Python
+import contextlib
 import os
 import json
 import urllib
@@ -47,8 +48,8 @@ class EtagFilter(Filter):
         solr_query_url = VIVO_SOLR + '/' + params
         logging.debug("Solr URL: " + solr_query_url)
         try:
-            solr_handle = urllib.urlopen(solr_query_url)
-            solr_resp = json.load(solr_handle)
+            with contextlib.closing(urllib.urlopen(solr_query_url)) as solr_handle:
+                solr_resp = json.load(solr_handle)
         except Exception, e:
             logging.error("Failed to connect to Solr with:")
             logging.error(e)
