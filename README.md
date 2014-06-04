@@ -5,6 +5,7 @@ Modifications to VIVO.
 Configured with the [VIVO three tiered build method](https://wiki.duraspace.org/display/VIVO/Building+VIVO+in+3+tiers).   
 
 ####Install
+~~~
 $ git clone https://github.com/Brown-University-Library/vivo.git brown-vivo
 $ cd brown-vivo
 $ git submodule init
@@ -23,3 +24,4 @@ $cp default.deploy.properties deploy.properties
 #Create the data directory specified in deploy.properties if it doesn't exist.
 #Build and deploy VIVO
 $ ant all
+~~~
