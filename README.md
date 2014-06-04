@@ -6,11 +6,6 @@ Configured with the [VIVO three tiered build method](https://wiki.duraspace.org/
 
 ####Install
 
-VIVO requires a MySQL database.  Log in to mysql and type:
-~~~
-mysql> create database vivo character set 'utf8';
-~~~
-
 ~~~
 $ git clone https://github.com/Brown-University-Library/vivo.git brown-vivo
 $ cd brown-vivo
@@ -30,4 +25,11 @@ $cp default.deploy.properties deploy.properties
 #Create the data directory specified in deploy.properties if it doesn't exist.
 #Build and deploy VIVO
 $ ant all
+~~~
+
+####Database
+
+VIVO requires a MySQL database.  Log in to mysql and type:
+~~~
+mysql> create database vivo character set 'utf8';
 ~~~
