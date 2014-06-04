@@ -5,6 +5,12 @@ Modifications to VIVO.
 Configured with the [VIVO three tiered build method](https://wiki.duraspace.org/display/VIVO/Building+VIVO+in+3+tiers).   
 
 ####Install
+
+VIVO requires a MySQL database.  Log in to mysql and type:
+~~~
+mysql> create database vivo character set 'utf8';
+~~~
+
 ~~~
 $ git clone https://github.com/Brown-University-Library/vivo.git brown-vivo
 $ cd brown-vivo
