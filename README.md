@@ -29,7 +29,7 @@ $ ant all
 
 ####Database
 
-VIVO requires a MySQL database.  Log in to mysql and type:
+VIVO requires a MySQL database.  Log in to mysql and enter:
 ~~~
 mysql> create database vivo character set 'utf8';
 ~~~
