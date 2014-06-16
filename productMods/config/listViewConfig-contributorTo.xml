@@ -55,7 +55,7 @@ example:
                 FILTER ( bound(?citation) )
                 </critical-data-required>
         
-            } ORDER BY ?date ?label
+            } ORDER BY DESC(?dateTime) ?label
     </query-select>
 
     <query-construct>

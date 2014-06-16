@@ -74,15 +74,15 @@
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-contributorTo.xml</display:listViewConfigFile>
     </rdf:Description>
 
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/hasArtisticRole">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasArtisticRole.xml</display:listViewConfigFile>
+    </rdf:Description>
+
     <!--
      ******************************************************************
      end custom roles (from person) config
      ****************************************************************** 
     -->
-
-    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/vivo-brown/hasArtisticRole">
-        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasArtisticRole.xml</display:listViewConfigFile>
-    </rdf:Description>
 
     <rdf:Description rdf:about="http://vivoweb.org/ontology/core#hasClinicalRole">
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasRole.xml</display:listViewConfigFile>

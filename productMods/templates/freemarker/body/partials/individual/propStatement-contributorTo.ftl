@@ -24,40 +24,27 @@
         $('span.hideThis').parent().remove();
     </script>
 <#else>
-    <#local citationDetails>
-        <#if statement.subclass??>
-            <#if statement.subclass?contains("Article")>
-                <#if statement.journal??>
-                    <em>${statement.journal!}</em>.&nbsp;
-<#if statement.volume?? && statement.issue?? && statement.startPage?? && statement.endPage??>
-                         ${statement.volume!}.${statement.issue!}, ${statement.startPage!}-${statement.endPage!}.
-                    <#elseif statement.volume?? && statement.startPage?? && statement.endPage??>
-                        ${statement.volume!}:${statement.startPage!}-${statement.endPage!}.
-<#elseif statement.volume?? && statement.issue?? && statement.startPage??>
-${statement.volume!}.${statement.issue!}, ${statement.startPage!}.
-                    <#elseif statement.volume?? && statement.startPage??>
-                        ${statement.volume!}:${statement.startPage!}.
-<#elseif statement.volume?? && statement.issue??>
-${statement.volume!}.${statement.issue!}.
-                    <#elseif statement.volume??>
-                        ${statement.volume!}.
-                    <#elseif statement.startPage?? && statement.endPage??>
-                        ${statement.startPage!}-${statement.endPage!}.
-                    <#elseif statement.startPage??>
-                        ${statement.startPage!}.
-                    </#if>
-                </#if>
-            <#elseif statement.subclass?contains("Chapter")>
 
-            <#elseif statement.subclass?contains("Book")>
-            <#else>
-            </#if>
+    <#--
+    <#local resourceTitle>
+        <#if statement.citation??>
+            <a href="${profileUrl(statement.uri("citation"))}" title="resource name">${statement.label}</a>
+        <#else>            
+            <a href="${profileUrl(statement.uri("citation"))}" title="missing resource">missing information resource</a>
+        </#if>
+    </#local>
+    -->
+    <#-- This shouldn't happen, but we must provide for it -->
+
+    <#local resourceTitle>
+        <#if statement.label??>
+            ${statement.label}&nbsp;
         </#if>
     </#local>
 
-    <#local resourceTitle>
-        <#if statement.citation>
-            <a href="${profileUrl(statement.uri("citation"))}" title="resource name">${statement.label}</a>
+    <#local resource>
+        <#if statement.citation??>
+            <a class="full-text-link" href="${profileUrl(statement.uri("citation"))}" title="resource name">more info</a>
         <#else>
             <#-- This shouldn't happen, but we must provide for it -->
             <a href="${profileUrl(statement.uri("citation"))}" title="missing resource">missing information resource</a>
@@ -87,8 +74,19 @@ ${statement.authorList}.&nbsp;
 ${statement.lastName}, ${statement.firstName}.&nbsp;
        </#if>
     </#local>
-    
 
-    ${authorList}${resourceTitle} ${citationDetails} <@dt.yearSpan "${statement.dateTime!}" /> ${doi}
+    <#local venue>
+        <#if statement.venue??>
+            <em>${statement.venueLabel}</em>.&nbsp;
+        </#if>
+    </#local>
+
+    <#local linkedData>
+        <#if resource??>
+            <br />${resource}${doi}${pmid}
+        </#if>
+    </#local>
+
+    ${resourceTitle}${venue}<@dt.yearSpan "${statement.dateTime!}" />${linkedData}
 </#if>
 </#macro>
