@@ -25,25 +25,9 @@
     </script>
 <#else>
 
-    <#--
     <#local resourceTitle>
         <#if statement.citation??>
             <a href="${profileUrl(statement.uri("citation"))}" title="resource name">${statement.label}</a>
-        <#else>
-            <a href="${profileUrl(statement.uri("citation"))}" title="missing resource">missing information resource</a>
-        </#if>
-    </#local>
-    -->
-
-    <#local resourceTitle>
-        <#if statement.label??>
-            ${statement.label}
-        </#if>
-    </#local>
-
-    <#local resource>
-        <#if statement.citation??>
-            <a class="full-text-link" href="${profileUrl(statement.uri("citation"))}" title="resource name">more info</a>
         <#else>
             <a href="${profileUrl(statement.uri("citation"))}" title="missing resource">missing information resource</a>
         </#if>
@@ -105,12 +89,6 @@ ${statement.lastName}, ${statement.firstName}.
         </#if>
     </#local>
 
-    <#local linkedData>
-        <#if resource??>
-            <br />${resource}${doi}${pmid}
-        </#if>
-    </#local>
-
-    ${authorList}${resourceTitle}${venue}${dateTime}${volume}${issue}${pages}.${linkedData}
+    ${authorList}${resourceTitle}${venue}${dateTime}${volume}${issue}${pages}.${doi}${pmid}
 </#if>
 </#macro>
