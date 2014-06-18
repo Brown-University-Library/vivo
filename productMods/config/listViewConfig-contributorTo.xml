@@ -27,6 +27,9 @@ example:
                         ?venueLabel
                         ?doi
                         ?pmid
+                        ?pages
+                        ?volume
+                        ?issue
                         ?firstName
                         ?lastName
                         
@@ -51,6 +54,15 @@ example:
                 OPTIONAL {
                     ?citation bcite:pmid ?pmid .
                 }
+                OPTIONAL {
+                    ?citation bcite:pages ?pages .
+                }
+                OPTIONAL {
+                    ?citation bcite:volume ?volume .
+                }
+                OPTIONAL {
+                    ?citation bcite:issue ?issue .
+                }
                 <critical-data-required>
                 FILTER ( bound(?citation) )
                 </critical-data-required>
@@ -69,10 +81,13 @@ example:
             ?citation rdfs:label ?label .
             ?citation bcite:hasVenue ?venue .
             ?venue rdfs:label ?venueLabel .
-            ?citation bcite:date ?dateTime .
+            ?citation bcite:date ?year .
             ?citation bcite:authorList ?authorList .
             ?citation bcite:doi ?doi .
             ?citation bcite:pmid ?pmid .
+            ?citation bcite:pages ?pages .
+            ?citation bcite:volume ?volume .
+            ?citation bcite:issue ?issue .
             ?subject foaf:firstName ?firstName.
             ?subject foaf:lastName ?lastName .
         } WHERE {
@@ -88,7 +103,8 @@ example:
             }            
             UNION {
                 ?subject ?property ?citation .
-                ?citation bcite:date ?dateTime .            
+                ?citation bcite:date ?dateTime .
+                BIND(year(?dateTime) as ?year) .            
             }
             UNION {
                 ?subject ?property ?citation .
@@ -102,6 +118,18 @@ example:
             UNION {
                 ?subject ?property ?citation .
                 ?citation bcite:pmid ?pmid .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:pages ?pages .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:volume ?volume .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:issue ?issue .
             }
         }
     </query-construct>

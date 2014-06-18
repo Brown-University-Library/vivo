@@ -29,16 +29,15 @@
     <#local resourceTitle>
         <#if statement.citation??>
             <a href="${profileUrl(statement.uri("citation"))}" title="resource name">${statement.label}</a>
-        <#else>            
+        <#else>
             <a href="${profileUrl(statement.uri("citation"))}" title="missing resource">missing information resource</a>
         </#if>
     </#local>
     -->
-    <#-- This shouldn't happen, but we must provide for it -->
 
     <#local resourceTitle>
         <#if statement.label??>
-            ${statement.label}&nbsp;
+            ${statement.label}
         </#if>
     </#local>
 
@@ -46,7 +45,6 @@
         <#if statement.citation??>
             <a class="full-text-link" href="${profileUrl(statement.uri("citation"))}" title="resource name">more info</a>
         <#else>
-            <#-- This shouldn't happen, but we must provide for it -->
             <a href="${profileUrl(statement.uri("citation"))}" title="missing resource">missing information resource</a>
         </#if>
     </#local>
@@ -66,18 +64,44 @@
     <#local authorList>
        <#if statement.authorList??>
            <#if statement.authorList?ends_with('.') == true>
-${statement.authorList}&nbsp;
+${statement.authorList}
            <#else>
-${statement.authorList}.&nbsp;
+${statement.authorList}.
            </#if>
         <#else>
-${statement.lastName}, ${statement.firstName}.&nbsp;
+${statement.lastName}, ${statement.firstName}.
        </#if>
     </#local>
 
     <#local venue>
         <#if statement.venue??>
-            <em>${statement.venueLabel}</em>.&nbsp;
+            ${statement.venueLabel}.
+        </#if>
+    </#local>
+
+    <#local dateTime>
+        <#if statement.dateTime??>
+            ${statement.dateTime};
+        </#if>
+    </#local>
+
+    <#local pages>
+        <#if statement.pages??>
+            :&nbsp;${statement.pages}
+        </#if>
+    </#local>
+
+    <#local volume>
+        <#if statement.volume??>
+            ${statement.volume}
+        </#if>
+    </#local>
+
+    <#local issue>
+        <#if (statement.volume?? && statement.issue??)>
+            (${statement.issue})
+        <#elseif (statement.issue?? && !(statement.volume??))>
+            ${statement.issue}
         </#if>
     </#local>
 
@@ -87,6 +111,6 @@ ${statement.lastName}, ${statement.firstName}.&nbsp;
         </#if>
     </#local>
 
-    ${resourceTitle}${venue}<@dt.yearSpan "${statement.dateTime!}" />${linkedData}
+    ${authorList}${resourceTitle}${venue}${dateTime}${volume}${issue}${pages}.${linkedData}
 </#if>
 </#macro>
