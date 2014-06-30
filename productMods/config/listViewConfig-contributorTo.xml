@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- $This file is distributed under the terms of the license in /doc/license.txt$ -->
+
+<!-- See guidelines in vitro/doc/list_view_configuration_guidelines.txt -->
+
+<!-- 
+subject is CanonicalCourse, property is hasDepartmentOffering
+example:
+    'subject': '<http://vivo.brown.edu/individual/dept-42-subj-mcm-crs-1700s-narrative-and-immersion>',
+    'property': '<http://vivo.brown.edu/ontology/vivo-brown/hasDepartmentOffering>'
+-->
+
+<list-view-config>
+    <query-select>
+        PREFIX blocal: &lt;http://vivo.brown.edu/ontology/vivo-brown/&gt;
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX owl: &lt;http://www.w3.org/2002/07/owl#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX bcite: &lt;http://vivo.brown.edu/ontology/citation#&gt;
+        PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+        
+        SELECT DISTINCT ?citation
+                        ?label
+                        ?dateTime
+                        ?authorList
+                        ?venue
+                        ?venueLabel
+                        ?doi
+                        ?pmid
+                        ?pages
+                        ?volume
+                        ?issue
+                        ?firstName
+                        ?lastName
+                        
+            WHERE {
+                        
+                ?subject ?property ?citation .
+                ?citation rdfs:label ?label .
+                ?citation bcite:date ?dateTime .
+                ?subject foaf:firstName ?firstName.
+                ?subject foaf:lastName ?lastName .
+
+                OPTIONAL {
+                    ?citation bcite:authorList ?authorList .
+                }
+                OPTIONAL {
+                    ?citation bcite:hasVenue ?venue .
+                    ?venue rdfs:label ?venueLabel .
+                }
+                OPTIONAL {
+                    ?citation bcite:doi ?doi .
+                }
+                OPTIONAL {
+                    ?citation bcite:pmid ?pmid .
+                }
+                OPTIONAL {
+                    ?citation bcite:pages ?pages .
+                }
+                OPTIONAL {
+                    ?citation bcite:volume ?volume .
+                }
+                OPTIONAL {
+                    ?citation bcite:issue ?issue .
+                }
+                <critical-data-required>
+                FILTER ( bound(?citation) )
+                </critical-data-required>
+        
+            } ORDER BY DESC(?dateTime) ?label
+    </query-select>
+
+    <query-construct>
+        PREFIX vivo: &lt;http://vivoweb.org/ontology/core#&gt;
+        PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+        PREFIX bcite: &lt;http://vivo.brown.edu/ontology/citation#&gt;
+        PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+        
+        CONSTRUCT {
+            ?subject ?property ?citation .
+            ?citation rdfs:label ?label .
+            ?citation bcite:hasVenue ?venue .
+            ?venue rdfs:label ?venueLabel .
+            ?citation bcite:date ?year .
+            ?citation bcite:authorList ?authorList .
+            ?citation bcite:doi ?doi .
+            ?citation bcite:pmid ?pmid .
+            ?citation bcite:pages ?pages .
+            ?citation bcite:volume ?volume .
+            ?citation bcite:issue ?issue .
+            ?subject foaf:firstName ?firstName.
+            ?subject foaf:lastName ?lastName .
+        } WHERE {
+            {
+                ?subject ?property ?citation .
+                ?citation rdfs:label ?label .
+                ?subject foaf:firstName ?firstName.
+                ?subject foaf:lastName ?lastName .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:authorList ?authorList .
+            }            
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:date ?dateTime .
+                BIND(year(?dateTime) as ?year) .            
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:hasVenue ?venue .
+                ?venue rdfs:label ?venueLabel .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:doi ?doi .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:pmid ?pmid .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:pages ?pages .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:volume ?volume .
+            }
+            UNION {
+                ?subject ?property ?citation .
+                ?citation bcite:issue ?issue .
+            }
+        }
+    </query-construct>
+
+    <template>propStatement-contributorTo.ftl</template>
+</list-view-config>
