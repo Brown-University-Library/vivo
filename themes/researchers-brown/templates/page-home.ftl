@@ -129,7 +129,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <p>Researchers@Brown brings together, in one site, publicly available information on the people, departments, and activities that collectively make up research and scholarship in all disciplines at Brown.</p>
             <p>The Spring 2014 initial release of Researchers@Brown contains data from institutional sources and verbatim content from faculty profiles in the Directory of Research and Researchers at Brown (DRRB), the precursor system. Faculty members who do not have a profile can request one by contacting the appropriate <a href="https://vivo.brown.edu/faq/">faculty affairs office</a>.
             </p>
-            <p>A new <a href="/publications">“Publications”</a> section is now available.  Features include:
+            <p>A new <a href="/publications">"Publications"</a> section is now available.  Features include:
             <ul style="list-style:disc;margin-left:50px;">
                 <li>Enter DOI or PMID to have full citation automatically retrieved</li>
                 <li>Links to full text when available</li>
