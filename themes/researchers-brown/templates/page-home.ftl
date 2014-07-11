@@ -135,7 +135,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <li>Links to full text when available</li>
                 <li>Easy form for entering publications as separate fields</li>
                 <li>Harvested publications from PubMed for BioMed and Public Health faculty</li>
-                <li>Future arvesting from other sources (Web of Science, etc.) and for other faculty groups and disciplines</li>
+                <li>Future harvesting from other sources (Web of Science, etc.) and for other faculty groups and disciplines</li>
             </ul>
     </p>
            <p>
