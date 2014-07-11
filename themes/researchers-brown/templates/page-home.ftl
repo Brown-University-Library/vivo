@@ -182,8 +182,24 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                    <hr style="width:90%;clear:right;" />
                               <p class="news-item-title">Recent Faculty Books </p>
                                 <div id="rotating-item-wrapper">
+                                <a href="./display/lbraun">
+                                <img src="./themes/researchers-brown/images/books/braun.jpg" 
+                                alt="Breathing Race into the Machine by Lundy Braun" 
+                                title="Breathing Race into the Machine: The Surprising Career of the Spirometer from Plantation to Genetics" 
+                                class="rotating-item" height="225"/>
 
-                                         <a href="./display/shouston">
+                                <a href="./display/tbewes">
+                                <img src="./themes/researchers-brown/images/books/bewes.jpg" 
+                                alt="The Event of Postcolonial Shame by Timothy Bewes" 
+                                title="The Event of Postcolonial Shame" 
+                                class="rotating-item" height="225"/>
+
+                                <a href="./display/rcoover">
+                                <img src="./themes/researchers-brown/images/books/coover.jpg" 
+                                alt="The Brunist Day of Wrath by Robert Coover" 
+                                title="The Brunist Day of Wrath" 
+                                class="rotating-item" height="225"/>
+                                <a href="./display/shouston">
                                      <img src="./themes/researchers-brown/images/books/houston.jpg" alt="The Life Within: Classic Maya and the Matter of Permanence by Stephen Houston" title="The Life Within: Classic Maya and the Matter of Permanence" class="rotating-item" height="200" />
                                      </a>
                                          <a href="./display/kyperry">
