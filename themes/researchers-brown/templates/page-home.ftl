@@ -129,18 +129,15 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         <p>Researchers@Brown brings together, in one site, publicly available information on the people, departments, and activities that collectively make up research and scholarship in all disciplines at Brown.</p>
             <p>The Spring 2014 initial release of Researchers@Brown contains data from institutional sources and verbatim content from faculty profiles in the Directory of Research and Researchers at Brown (DRRB), the precursor system. Faculty members who do not have a profile can request one by contacting the appropriate <a href="https://vivo.brown.edu/faq/">faculty affairs office</a>.
             </p>
-
-            <p>
-            Improvements planned for the coming months include:
+            <p>A new <a href="/publications">“Publications”</a> section is now available.  Features include:
             <ul style="list-style:disc;margin-left:50px;">
-            <li>Links to full text of publications when available</li>
-            <li>An easy editor for publications and publication categories</li>
-            <li>The ability to simply enter a DOI to add publication data</li>
-            <li>An alert service for easily adding new publications</li>
-            <li>More robust search and discovery capabilities</li>
-            <li>Improvements in the site's visual presentation</li>  
+                <li>Enter DOI or PMID to have full citation automatically retrieved</li>
+                <li>Links to full text when available</li>
+                <li>Easy form for entering publications as separate fields</li>
+                <li>Harvested publications from PubMed for BioMed and Public Health faculty</li>
+                <li>Future arvesting from other sources (Web of Science, etc.) and for other faculty groups and disciplines</li>
             </ul>
-            </p>
+    </p>
            <p>
             Please provide feedback or request help by contacting <a href="mailto:researchers@brown.edu">researchers@brown.edu</a>.
             Visit our <a href="./about">Help</a> pages for further information.</p>
