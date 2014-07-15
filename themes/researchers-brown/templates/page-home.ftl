@@ -134,7 +134,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                 <li>Enter DOI or PMID to have full citation automatically retrieved</li>
                 <li>Links to full text when available</li>
                 <li>Easy form for entering publications as separate fields</li>
-                <li>Harvested publications from PubMed for BioMed and Public Health faculty</li>
+                <li>Harvested publications from PubMed for Biology and Public Health faculty</li>
                 <li>Future harvesting from other sources (Web of Science, etc.) and for other faculty groups and disciplines</li>
             </ul>
     </p>
