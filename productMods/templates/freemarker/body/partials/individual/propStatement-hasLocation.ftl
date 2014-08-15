@@ -15,25 +15,16 @@
 <#-- Use a macro to keep variable assignments local; otherwise the values carry over to the
      next statement -->
 <#macro showRole statement>
-    <#local linkedIndividual>
-        <#if statement.artEvent??>
-            <a href="${profileUrl(statement.uri("artEvent"))}" title="artistic-work">${statement.artEventLabel!statement.roleLabel}</a>
+    <#local unlinkedIndividual>
+        <#if statement.location??>
+            ${statement.label}
         <#else>
             <#-- This shouldn't happen, but we must provide for it -->
-            <a href="${profileUrl(statement.uri("role"))}" title="missing activity">missing activity</a>
-        </#if>
-    </#local>
-    
-    <#local linkedVenue>
-        <#if statement.venue??>
-            ${statement.venueLabel!statementRoleLabel}
+            missing location
         </#if>
     </#local>
 
-    <#local dateTime>
-        <@dt.yearSpan "${statement.dateLabel!}" /> 
-    </#local>
 
-    <@s.join [ linkedIndividual, linkedVenue ] /> ${dateTime!}
+    ${unlinkedIndividual}
     
 </#macro>

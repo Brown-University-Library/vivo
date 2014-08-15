@@ -12,6 +12,7 @@
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
         PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
+        PREFIX bcite: &lt;http://vivo.brown.edu/ontology/citation#&gt;
         
         SELECT DISTINCT ?location
                         ?label
@@ -37,6 +38,7 @@
         PREFIX rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;
         PREFIX vitro: &lt;http://vitro.mannlib.cornell.edu/ns/vitro/0.7#&gt;
         PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
+        PREFIX bcite: &lt;http://vivo.brown.edu/ontology/citation#&gt;
         
         CONSTRUCT {
             ?subject ?property ?location .
@@ -47,5 +49,5 @@
         }
     </query-construct>
     
-    <template>propStatement-hasLoctaion.ftl</template>
+    <template>propStatement-hasLocation.ftl</template>
 </list-view-config>

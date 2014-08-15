@@ -243,5 +243,27 @@
     <rdf:Description rdf:about="http://vivoweb.org/ontology/core#scopusId">
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-scopusId.xml</display:listViewConfigFile>
     </rdf:Description>
+
+    <!--
+     ******************************************************************
+     end data property custom list views
+     ****************************************************************** 
+    -->
+
+    <!--
+     ******************************************************************
+     object property custom list views
+     ****************************************************************** 
+    -->
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/citation#hasLocation">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasLocation.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <!--
+     ******************************************************************
+     end object property custom list views
+     ****************************************************************** 
+    -->
         
 </rdf:RDF>
