@@ -1,6 +1,6 @@
 ###Brown University Libraries
 
-Modifications to VIVO.  
+Modifications to VIVO for Brown University's [VIVO implementation](http://vivo.brown.edu/).  
 
 Configured with the [VIVO three tiered build method](https://wiki.duraspace.org/display/VIVO/Building+VIVO+in+3+tiers).   
 
