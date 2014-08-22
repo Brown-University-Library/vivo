@@ -51,7 +51,7 @@
                 </#if>
                 <#-- List the statements for each property -->
 		<#if property.localName == "scholarlyWork" >
-		   <section class="formatted-text" id="${property.localName}">
+		   <section class="formatted-text" id="${property.localName}Section">
 			<#list property.statements as statement>
 				${statement.value}
                         </#list>
