@@ -1748,3 +1748,21 @@ padding:5px;
     padding-right: 0;
     border-right: none;
 }
+
+/*match padding for data property lists*/
+section.formatted-text {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+/*reset ordered lists so they display as expected.*/
+section.formatted-text ol {
+  list-style-type: decimal; 
+  list-style-position: inside; 
+}
+
+section.formatted-text ol li {
+  padding: .25em;
+}
