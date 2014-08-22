@@ -58,14 +58,18 @@ ${statement.lastName}, ${statement.firstName}.
     </#local>
 
     <#local venue>
-        <#if statement.venue??>
+        <#if (statement.venue?? && statement.dateTime??)>
             ${statement.venueLabel}.
+        <#elseif (statement.venue?? && !(statement.dateTime??))>
+            ${statement.venueLabel}
         </#if>
     </#local>
 
     <#local dateTime>
-        <#if statement.dateTime??>
+        <#if (statement.dateTime?? && statement.volume??)>
             ${statement.dateTime};
+        <#elseif (statement.dateTime?? && !(statement.volume??))>
+            ${statement.dateTime}
         </#if>
     </#local>
 
