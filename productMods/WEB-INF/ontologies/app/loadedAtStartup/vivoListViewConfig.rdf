@@ -56,6 +56,14 @@
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasCredential.xml</display:listViewConfigFile>
     </rdf:Description>
 
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#hasHospitalAppointment">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasHospitalAppointment.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#hasPostdocAppointment">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-hasPostdocAppointment.xml</display:listViewConfigFile>
+    </rdf:Description>
+
 
     <!--
      ******************************************************************
