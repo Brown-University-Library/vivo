@@ -292,7 +292,43 @@
 
     <!--
      ******************************************************************
-     end object property custom list views
+     end properties rendered by unlinkedObject listview
+     ****************************************************************** 
+    -->
+
+    <!--
+     ******************************************************************
+     properties rendered by showFaculty listview
+     ****************************************************************** 
+    -->
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#employerForHospitalAppointment">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#grantsCredential">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#credentialSpecialtyFor">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#organizationForPostdocAppointment">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#hopsitalForPostdocAppointment">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#postdocSpecialtyOrDepartmentForAppointment">
+        <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
+    </rdf:Description>
+
+    <!--
+     ******************************************************************
+     end properties rendered by showFaculty listview
      ****************************************************************** 
     -->
         
