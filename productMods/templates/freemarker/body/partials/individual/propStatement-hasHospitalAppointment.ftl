@@ -21,14 +21,10 @@
     </#local>
 
     <#local employer>
-        <#if statement.emp??>
+        <#if (statement.emp?? && statement.hdept??)>
+            <a href="${profileUrl(statement.uri("emp"))}" title="granted by">${statement.empText!}</a>,&nbsp;${statement.hdept!}
+        <#elseif (statement.emp?? && !(statement.hdept??))>
             <a href="${profileUrl(statement.uri("emp"))}" title="granted by">${statement.empText!}</a>
-        </#if>
-    </#local>
-
-    <#local department>
-        <#if statement.hdept??>
-            ,&nbsp;${statement.hdept!}
         </#if>
     </#local>
 
@@ -38,5 +34,5 @@
         </#if>
     </#local>
 
-${label}${employer}${department}${date}
+${label}${employer}${date}
 </#macro>

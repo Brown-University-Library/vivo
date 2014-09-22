@@ -20,35 +20,37 @@
         </#if>
     </#local>
 
-    <#local orgHosp>
-        <#if (statement.org?? && statement.hosp??)>
+    <#local orgHospSpec>
+        <#if (statement.org?? && statement.spec?? && statement.hosp??)>
+            <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>,&nbsp;<a href="${profileUrl(statement.uri("hosp"))}" title="credential hospialty">${statement.hospText!}&nbsp;<a href="${profileUrl(statement.uri("spec"))}" title="credential specialty">${statement.specText!}</a>.
+        <#elseif (statement.org?? && statement.hosp?? && !(statement.spec??))>
             <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>,&nbsp;<a href="${profileUrl(statement.uri("hosp"))}" title="credential hospialty">${statement.hospText!}</a>
-        <#elseif (statement.org?? && !(statement.hosp??))>
-            <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>
+        <#elseif (statement.org?? && statement.spec?? && !(statement.hosp??))>
+            <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>,&nbsp;<a href="${profileUrl(statement.uri("spec"))}" title="credential specialty">${statement.specText!}</a>.
+        <#elseif (statement.org?? && !(statement.hosp??) && !(statement.spec??))>
+            <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>.
+        <#elseif (statement.hosp?? && statement.spec?? && !(statement.org??))>
+            <a href="${profileUrl(statement.uri("hosp"))}" title="granted by">${statement.hospText!}</a>,&nbsp;<a href="${profileUrl(statement.uri("spec"))}" title="credential specialty">${statement.specText!}</a>.
+        <#elseif (statement.hosp?? && !(statement.spec??) && !(statement.hosp??))>
+            <a href="${profileUrl(statement.uri("hosp"))}" title="granted by">${statement.hospText!}</a>.
         </#if>
     </#local>
 
-    <#local specialty>
-        <#if statement.spec??>
-            ,&nbsp;<a href="${profileUrl(statement.uri("spec"))}" title="granted by">${statement.specText!}</a>
-        </#if>
-    </#local>
-
-    <#local city>
-        <#if statement.pdocCity??>
-            &#35;${statement.pdocCity!}
-        </#if>
-    </#local>
-
-    <#local state>
-        <#if statement.pdocState??>
-            &#35;${statement.pdocState!}
-        </#if>
-    </#local>
-
-    <#local country>
-        <#if statement.pdocCountry??>
-            &#35;${statement.pdocCountry!}
+    <#local cityStateCountry>
+        <#if (statement.pdocCity?? && statement.pdocState?? && statement.pdocCountry??)>
+            ${statement.pdocCity!}, ${statement.pdocState!}, ${statement.pdocCountry!}
+        <#elseif (statement.pdocCity?? && !(statement.pdocState??) && statement.pdocCountry??)>
+            ${statement.pdocCity!}, ${statement.pdocCountry!}
+        <#elseif (statement.pdocCity?? && statement.pdocState?? && !(statement.pdocCountry??))>
+            ${statement.pdocCity!}, ${statement.pdocState!}
+        <#elseif (statement.pdocCity?? && !(statement.pdocState??) && !(statement.pdocCountry??))>
+            ${statement.pdocCity!}
+        <#elseif (!(statement.pdocCity??) && statement.pdocState?? && statement.pdocCountry??)>
+            ${statement.pdocState!}, ${statement.pdocCountry!}
+        <#elseif (!(statement.pdocCity??) && statement.pdocState?? && !(statement.pdocCountry??))>
+            ${statement.pdocState!}
+        <#elseif (!(statement.pdocCity??) && !(statement.pdocState??) && statement.pdocCountry??)>
+            ${statement.pdocCountry!}
         </#if>
     </#local>
 
@@ -58,5 +60,5 @@
         </#if>
     </#local>
 
-${label}${orgHosp}${specialty}${date}${city}${state}${country}
+${label}${orgHospSpec}${date}${cityStateCountry}
 </#macro>

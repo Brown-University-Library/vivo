@@ -21,7 +21,7 @@ example:
         PREFIX event: &lt;http://purl.org/NET/c4dm/event.owl#&gt;
         PREFIX bprofile: &lt;http://vivo.brown.edu/ontology/profile#&gt;
         
-        SELECT DISTINCT ?faculty ?name
+        SELECT DISTINCT ?res ?label ?faculty ?name
                         
         WHERE {                        
                 ?subject ?property ?res .
