@@ -22,7 +22,7 @@
 
     <#local orgHospSpec>
         <#if (statement.org?? && statement.spec?? && statement.hosp??)>
-            <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>,&nbsp;<a href="${profileUrl(statement.uri("hosp"))}" title="credential hospialty">${statement.hospText!}&nbsp;<a href="${profileUrl(statement.uri("spec"))}" title="credential specialty">${statement.specText!}</a>.
+            <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>,&nbsp;<a href="${profileUrl(statement.uri("hosp"))}" title="credential hospialty">${statement.hospText!},&nbsp;<a href="${profileUrl(statement.uri("spec"))}" title="credential specialty">${statement.specText!}</a>.
         <#elseif (statement.org?? && statement.hosp?? && !(statement.spec??))>
             <a href="${profileUrl(statement.uri("org"))}" title="granted by">${statement.orgText!}</a>,&nbsp;<a href="${profileUrl(statement.uri("hosp"))}" title="credential hospialty">${statement.hospText!}</a>
         <#elseif (statement.org?? && statement.spec?? && !(statement.hosp??))>

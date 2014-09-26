@@ -314,11 +314,11 @@
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
     </rdf:Description>
 
-    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#organizationForPostdocAppointment">
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#supervisorForPostdocAppointment">
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
     </rdf:Description>
 
-    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#hopsitalForPostdocAppointment">
+    <rdf:Description rdf:about="http://vivo.brown.edu/ontology/profile#hostForPostdocAppointment">
         <display:listViewConfigFile rdf:datatype="http://www.w3.org/2001/XMLSchema#string">listViewConfig-showFaculty.xml</display:listViewConfigFile>
     </rdf:Description>
 

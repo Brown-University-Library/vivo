@@ -27,8 +27,8 @@
                 }
             OPTIONAL { ?happt bprofile:hasHospitalAppointmentEmployer ?emp .
                         ?emp rdfs:label ?empText }
-            OPTIONAL { ?happt bprofile:hospitalAppointmentStartDate ?start }
-            OPTIONAL { ?happt bprofile:hospitalAppointmentEndDate ?end }
+            OPTIONAL { ?happt bprofile:medicalAppointmentStartDate ?start }
+            OPTIONAL { ?happt bprofile:medicalAppointmentEndDate ?end }
             OPTIONAL { ?happt bprofile:hospitalAppointmentDepartment ?hdept }
         }
         ORDER BY <collated>?subclass</collated> DESC(?start)
@@ -46,8 +46,8 @@
             ?happt vitro:mostSpecificType ?subclass .
             ?happt bprofile:hasHospitalAppointmentEmployer ?emp .
             ?emp rdfs:label ?empText .
-            ?happt bprofile:hospitalAppointmentStartDate ?start .
-            ?happt bprofile:hospitalAppointmentEndDate ?end .
+            ?happt bprofile:medicalAppointmentStartDate ?start .
+            ?happt bprofile:medicalAppointmentEndDate ?end .
             ?happt bprofile:hospitalAppointmentDepartment ?hdept .
         } WHERE {
             {
@@ -65,12 +65,12 @@
             }
             UNION {
                 ?subject ?property ?happt .
-                ?happt bprofile:hospitalAppointmentStartDate ?startDate .
+                ?happt bprofile:medicalAppointmentStartDate ?startDate .
                 BIND(year(?startDate) as ?start) .            
             }
             UNION {
                 ?subject ?property ?happt .
-                ?happt bprofile:hospitalAppointmentEndDate ?endDate .
+                ?happt bprofile:medicalAppointmentEndDate ?endDate .
                 BIND(year(?endDate) as ?end) .            
             }
             UNION {
