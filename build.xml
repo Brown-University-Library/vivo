@@ -44,9 +44,8 @@
 	-->
 	<import file="${vitro.core.dir}/webapp/build.xml" />
 
-        <!-- override directory where solr data is stored
-         <property name="solr.home.dir" location="${vitro.home}/solrdata" />
-        -->
+        <!-- override directory where solr data is stored -->
+        <property name="solr.home.dir" location="${vitro.home}/solrv17data" />
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: prepare
