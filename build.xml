@@ -13,7 +13,7 @@
 	    tomcat.home
 	    webapp.name
 	     ====================================================================== -->
-<project name="brown-vivo" default="describe">
+<project name="brown-vivo17" default="describe">
 	
 	<!-- 
 		The build directory goes in the product directory. 
@@ -25,39 +25,35 @@
 	<!--
 		Load the properties from deploy.properties.
 	-->
-	<property name="deploy.properties.file" location="deploy.properties" />
-	<fail message="You must create a &quot;${deploy.properties.file}&quot; file.">
+	<property name="build.properties.file" location="build.properties" />
+	<fail message="You must create a &quot;${build.properties.file}&quot; file.">
 		<condition>
 			<not>
-				<available file="${deploy.properties.file}" />
+				<available file="${build.properties.file}" />
 			</not>
 		</condition>
 	</fail>
-	<property file="${deploy.properties.file}" />
+	<property file="${build.properties.file}" />
 	<fail unless="vitro.core.dir"
-	      message="${deploy.properties.file} must contain a value for vitro.core.dir" />
+	      message="${build.properties.file} must contain a value for vitro.core.dir" />
 	<fail unless="nihvivo.dir"
-	      message="${deploy.properties.file} must contain a value for nihvivo.dir" />
-
-	<!-- ================================= 
-		Copy Solr modifications to Vitro solr/
-	================================= -->
-	<copy todir="${vitro.core.dir}/solr" overwrite="true">
-        	<fileset dir="solr"/>
-  	</copy>
+	      message="${build.properties.file} must contain a value for nihvivo.dir" />
 
 	<!--
 		Base it all on the core build file. 
 	-->
 	<import file="${vitro.core.dir}/webapp/build.xml" />
 
+        <!-- override directory where solr data is stored
+         <property name="solr.home.dir" location="${vitro.home}/solrdata" />
+        -->
+
 	<!-- - - - - - - - - - - - - - - - - - 
           target: prepare
           
           Override the core version, so we can merge the three levels before building.                      
          - - - - - - - - - - - - - - - - - -->
-	<target name="prepare" depends="compileUtilities,product-prepare,vitroCore.prepare" />
-	<!-- <target name="prepare" depends="product-prepare,vitroCore.prepare" /> -->
+	<target name="prepare" depends="product-prepare,vitroCore.prepare" />
 
 	<!-- - - - - - - - - - - - - - - - - - 
           target: product-prepare
@@ -84,15 +80,18 @@
 		</copy>
 
 		<patternset id="appbase.patterns">
-			<include name="src/**/*" />
-			<include name="lib/**/*" />
-			<include name="test/**/*" />
-			<include name="themes/**/*" />
-			<include name="config/*.properties" />
-			<include name="config/*.txt" />
-			<include name="config/solr/*" />
-			<include name="context.xml" />
-		</patternset>
+                        <include name="src/**/*" />
+                        <include name="lib/**/*" />
+                        <include name="rdf/**/*" />
+                        <include name="test/**/*" />
+                        <include name="themes/**/*" />
+                        <include name="languages/**/*" />
+                        <include name="config/*.properties" />
+                        <include name="config/*.txt" />
+                        <include name="config/jarlist/*.txt" />
+                        <include name="config/solr/*" />
+                        <include name="context.xml" />
+                </patternset>
 
 		<copy todir="${appbase.dir}" includeemptydirs="true">
 			<fileset dir="${corebase.dir}">
