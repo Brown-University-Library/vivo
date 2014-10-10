@@ -119,6 +119,7 @@
       <analyzer>
         <tokenizer class="solr.KeywordTokenizerFactory"/>
         <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(Center|Department|Initiative|Institute|Program|School|((^|\s)for\s|in\s|of\s|the\s))" replacement="" replace="all"/>
+        <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="(Study|((^|\s)for\s|in\s|of\s|the\s))" replacement="" replace="all"/>
         <filter class="solr.ASCIIFoldingFilterFactory"/>
         <filter class="solr.TrimFilterFactory" />
         <!-- lowercase for consistent alpha filtering -->
