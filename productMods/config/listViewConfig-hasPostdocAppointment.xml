@@ -95,7 +95,10 @@
             UNION {
                 ?subject ?property ?pdoc .
                 ?pdoc bprofile:medicalAppointmentEndDate ?endDate .
-                BIND(year(?endDate) as ?end) .            
+                BIND((IF
+                    (year(?endDate) &lt; year(NOW()), year(?endDate), "Present")
+                    )
+                    as ?end) .           
             }
             UNION {
                 ?subject ?property ?pdoc .
