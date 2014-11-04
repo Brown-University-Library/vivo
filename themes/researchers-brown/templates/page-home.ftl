@@ -186,57 +186,74 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
                                 <div id="rotating-item-wrapper">
                                     <a href="./display/kmclaugh">
                                     <img src="./themes/researchers-brown/images/books/kmclaugh.jpg" alt="Poetic Force: Poetry after Kant by Kevin McLaughlin" title="Poetic Force: Poetry after Kant" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/nbarnett">
                                     <img src="./themes/researchers-brown/images/books/barnett.jpg" alt="College Student Alcohol Abuse by Nancy Barnett by Nancy Barnett" title="College Student Alcohol Abuse" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/sgolub">
                                     <img src="./themes/researchers-brown/images/books/sgolub.jpg" alt="Incapacity: Wittgenstein, Anxiety, and Performance Behavior by Spencer Golub" title="Incapacity: Wittgenstein, Anxiety, and Performance Behavior" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/jpallen">
                                     <img src="./themes/researchers-brown/images/books/jpallen.jpg" alt="The Ancient Egyptian Language: a Historical Study by James P. Allen" title="The Ancient Egyptian Language: a Historical Study" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/pgould">
                                     <img src="./themes/researchers-brown/images/books/gould.jpg" alt="Writing the Rebellion: Loyalists and the Literature of Politics in British America by Philip Gould" title="Writing the Rebellion: Loyalists and the Literature of Politics in British America" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/rrambuss">
                                     <img src="./themes/researchers-brown/images/books/rambuss.jpg" alt="The English Poems of Richard Crashaw edited by Richard Rambuss" title="The English Poems of Richard Crashaw" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/mblasing">
                                     <img src="./themes/researchers-brown/images/books/blasing.jpg" alt="Nâzim Hikmet: The Life and Times of Turkey's World Poet by Mutlu Blasing" title="Nâzim Hikmet: The Life and Times of Turkey's World Poet" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/sburrows">
                                     <img src="./themes/researchers-brown/images/books/burrows.jpg" alt="A Familiar Strangeness: American Fiction and the Language of Photography, 1839-1945 by Stuart Burrows" title="A Familiar Strangeness: American Fiction and the Language of Photography, 1839-1945" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/jegan">
                                     <img src="./themes/researchers-brown/images/books/egan.jpg" alt="Oriental Shadows: The Presence of the East in Early American Literature by Jim Egan" title="Oriental Shadows: The Presence of the East in Early American Literature" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/pbarmstr">
                                     <img src="./themes/researchers-brown/images/books/armstrong.jpg" alt="The Neuroscience of Reading and Art by Paul B. Armstrong" title="The Neuroscience of Reading and Art" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/jkuzner">
                                     <img src="./themes/researchers-brown/images/books/kuzner.jpg" alt="Open Subjects: Renaissance Republicans, Modern Selfhoods and the Virtue of Vulnerability by James Kuzner" title="Open Subjects: Renaissance Republicans, Modern Selfhoods and the Virtue of Vulnerability" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/sstewart">
                                     <img src="./themes/researchers-brown/images/books/stuart-steinberg.jpg" alt="Impious Fidelity: Anna Freud, Psychoanalysis, Politics by Suzanne Stuart-Steinberg" title="Impious Fidelity: Anna Freud, Psychoanalysis, Politics" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/khaynes">
                                     <img src="./themes/researchers-brown/images/books/haynes.jpg" alt="Broken Hierarchies: Collected Poems 1952-2012 edited by Kenneth Haynes" title="Broken Hierarchies: Collected Poems 1952-2012" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/gwood">
                                     <img src="./themes/researchers-brown/images/books/wood.jpg" alt="Empire of Liberty: A History of the Early Republic, 1789-1815 by Gordon S. Wood" title="Empire of Liberty: A History of the Early Republic, 1789-1815" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/mcammett">
                                     <img src="./themes/researchers-brown/images/books/cammett.jpg" alt="Compassionate Communalism: Welfare and Sectarianism in Lebanon by Melani C. Cammett" title="Compassionate Communalism: Welfare and Sectarianism in Lebanon" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/mc133">
                                     <img src="./themes/researchers-brown/images/books/clayton.jpg" alt="Poetry in Pieces: César Vallejo and Lyric Modernity by Michelle Clayton" title="Poetry in Pieces: César Vallejo and Lyric Modernity" class="rotating-item" height="225"/>
+                                    </a>
                                     
                                     <a href="./display/smerrim">
                                     <img src="./themes/researchers-brown/images/books/merrim.jpg" alt="The Spectacular City, Mexico, and Colonial Hispanic Literary Culture by Stephanie Merrim" title="The Spectacular City, Mexico, and Colonial Hispanic Literary Culture" class="rotating-item" height="225"/>
+                                    </a>
                                 </div>
                                 <p></p>
-                                 <p class='viewprofile'>Click book jacket to view faculty profile</p>
+                                 <p class="viewprofile">Click book jacket to view faculty profile</p>
                                  </div>
 
          </section>
