@@ -1,5 +1,7 @@
 ###Brown University Libraries
 
+*This code is no longer in use.  The platform was updated to VIVO/Vitro 1.7 in January of 2015.  See this [repository](https://github.com/Brown-University-Library/rab) for that code.*
+
 Modifications to VIVO for Brown University's [VIVO implementation](http://vivo.brown.edu/).  
 
 Configured with the [VIVO three tiered build method](https://wiki.duraspace.org/display/VIVO/Building+VIVO+in+3+tiers).   
