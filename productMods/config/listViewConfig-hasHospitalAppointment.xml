@@ -25,11 +25,11 @@
                         ?happt vitro:mostSpecificType ?subclass
                     </collated>
                 }
-            OPTIONAL { ?happt bprofile:hasHospitalAppointmentEmployer ?emp .
+            OPTIONAL { ?happt bprofile:hasHospitalAppointmentWith ?emp .
                         ?emp rdfs:label ?empText }
-            OPTIONAL { ?happt bprofile:medicalAppointmentStartDate ?start }
-            OPTIONAL { ?happt bprofile:medicalAppointmentEndDate ?end }
-            OPTIONAL { ?happt bprofile:hospitalAppointmentDepartment ?hdept }
+            OPTIONAL { ?happt bprofile:startDate ?start }
+            OPTIONAL { ?happt bprofile:endDate ?end }
+            OPTIONAL { ?happt bprofile:department ?hdept }
         }
         ORDER BY <collated>?subclass</collated> DESC(?start)
     </query-select>
@@ -44,11 +44,11 @@
             ?subject ?property ?happt .
             ?happt rdfs:label ?happtText .
             ?happt vitro:mostSpecificType ?subclass .
-            ?happt bprofile:hasHospitalAppointmentEmployer ?emp .
+            ?happt bprofile:hasHospitalAppointmentWith ?emp .
             ?emp rdfs:label ?empText .
-            ?happt bprofile:medicalAppointmentStartDate ?start .
-            ?happt bprofile:medicalAppointmentEndDate ?end .
-            ?happt bprofile:hospitalAppointmentDepartment ?hdept .
+            ?happt bprofile:startDate ?start .
+            ?happt bprofile:endDate ?end .
+            ?happt bprofile:department ?hdept .
         } WHERE {
             {
                 ?subject ?property ?happt .
@@ -60,17 +60,17 @@
             }
             UNION {
                 ?subject ?property ?happt .
-                ?happt bprofile:hasHospitalAppointmentEmployer ?emp .
+                ?happt bprofile:hasHospitalAppointmentWith ?emp .
                 ?emp rdfs:label ?empText .         
             }
             UNION {
                 ?subject ?property ?happt .
-                ?happt bprofile:medicalAppointmentStartDate ?startDate .
+                ?happt bprofile:startDate ?startDate .
                 BIND(year(?startDate) as ?start) .            
             }
             UNION {
                 ?subject ?property ?happt .
-                ?happt bprofile:medicalAppointmentEndDate ?endDate .
+                ?happt bprofile:endDate ?endDate .
                 BIND((IF
                     (year(?endDate) &lt; year(NOW()), year(?endDate), "Present")
                     )
@@ -78,7 +78,7 @@
             }
             UNION {
                 ?subject ?property ?happt .
-                ?happt bprofile:hospitalAppointmentDepartment ?hdept .           
+                ?happt bprofile:department ?hdept .           
             }
         }
     </query-construct>

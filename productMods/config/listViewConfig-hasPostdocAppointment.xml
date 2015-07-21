@@ -27,17 +27,17 @@
                         ?pdoc vitro:mostSpecificType ?subclass
                     </collated>
                 }
-            OPTIONAL { ?pdoc bprofile:hasPostdocAppointmentSupervisor ?org .
+            OPTIONAL { ?pdoc bprofile:hasPostdocAppointmentOrganization ?org .
                         ?org rdfs:label ?orgText }
-            OPTIONAL { ?pdoc bprofile:hasPostdocAppointmentHost ?hosp .
+            OPTIONAL { ?pdoc bprofile:hasPostdocAppointmentHospital ?hosp .
                         ?hosp rdfs:label ?hospText }
             OPTIONAL { ?pdoc bprofile:hasPostdocSpecialtyOrDepartment ?spec .
                         ?spec rdfs:label ?specText }
-            OPTIONAL { ?pdoc bprofile:medicalAppointmentStartDate ?start }
-            OPTIONAL { ?pdoc bprofile:medicalAppointmentEndDate ?end }
-            OPTIONAL { ?pdoc bprofile:medicalAppointmentCity ?pdocCity }
-            OPTIONAL { ?pdoc bprofile:medicalAppointmentState ?pdocState }
-            OPTIONAL { ?pdoc bprofile:medicalAppointmentCountry ?pdocCountry }
+            OPTIONAL { ?pdoc bprofile:startDate ?start }
+            OPTIONAL { ?pdoc bprofile:endDate ?end }
+            OPTIONAL { ?pdoc bprofile:city ?pdocCity }
+            OPTIONAL { ?pdoc bprofile:state ?pdocState }
+            OPTIONAL { ?pdoc bprofile:country ?pdocCountry }
         }
         ORDER BY <collated>?subclass</collated> DESC(?start)
     </query-select>
@@ -52,17 +52,17 @@
             ?subject ?property ?pdoc .
             ?pdoc rdfs:label ?pdocText .
             ?pdoc vitro:mostSpecificType ?subclass .
-            ?pdoc bprofile:hasPostdocAppointmentSupervisor ?org .
+            ?pdoc bprofile:hasPostdocAppointmentOrganization ?org .
             ?org rdfs:label ?orgText .
-            ?pdoc bprofile:hasPostdocAppointmentHost ?hosp .
+            ?pdoc bprofile:hasPostdocAppointmentHospital ?hosp .
             ?hosp rdfs:label ?hospText .
             ?pdoc bprofile:hasPostdocSpecialtyOrDepartment ?spec .
             ?spec rdfs:label ?specText .
-            ?pdoc bprofile:medicalAppointmentStartDate ?start .
-            ?pdoc bprofile:medicalAppointmentEndDate ?end .
-            ?pdoc bprofile:medicalAppointmentCity ?pdocCity .
-            ?pdoc bprofile:medicalAppointmentState ?pdocState .
-            ?pdoc bprofile:medicalAppointmentCountry ?pdocCountry .
+            ?pdoc bprofile:startDate ?start .
+            ?pdoc bprofile:endDate ?end .
+            ?pdoc bprofile:city ?pdocCity .
+            ?pdoc bprofile:state ?pdocState .
+            ?pdoc bprofile:country ?pdocCountry .
         } WHERE {
             {
                 ?subject ?property ?pdoc .
@@ -74,12 +74,12 @@
             }
             UNION {
                 ?subject ?property ?pdoc .
-                ?pdoc bprofile:hasPostdocAppointmentSupervisor ?org .
+                ?pdoc bprofile:hasPostdocAppointmentOrganization ?org .
                 ?org rdfs:label ?orgText .         
             }
             UNION {
                 ?subject ?property ?pdoc .
-                ?pdoc bprofile:hasPostdocAppointmentHost ?hosp .
+                ?pdoc bprofile:hasPostdocAppointmentHospital ?hosp .
                 ?hosp rdfs:label ?hospText .         
             }
             UNION {
@@ -89,12 +89,12 @@
             }
             UNION {
                 ?subject ?property ?pdoc .
-                ?pdoc bprofile:medicalAppointmentStartDate ?startDate .
+                ?pdoc bprofile:startDate ?startDate .
                 BIND(year(?startDate) as ?start) .            
             }
             UNION {
                 ?subject ?property ?pdoc .
-                ?pdoc bprofile:medicalAppointmentEndDate ?endDate .
+                ?pdoc bprofile:endDate ?endDate .
                 BIND((IF
                     (year(?endDate) &lt; year(NOW()), year(?endDate), "Present")
                     )
@@ -102,15 +102,15 @@
             }
             UNION {
                 ?subject ?property ?pdoc .
-                ?pdoc bprofile:medicalAppointmentCity ?pdocCity .           
+                ?pdoc bprofile:city ?pdocCity .           
             }
             UNION {
                 ?subject ?property ?pdoc .
-                ?pdoc bprofile:medicalAppointmentState ?pdocState .           
+                ?pdoc bprofile:state ?pdocState .           
             }
             UNION {
                 ?subject ?property ?pdoc .
-                ?pdoc bprofile:medicalAppointmentCountry ?pdocCountry .           
+                ?pdoc bprofile:country ?pdocCountry .           
             }
         }
     </query-construct>
