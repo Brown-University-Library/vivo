@@ -25,7 +25,7 @@
                         ?happt vitro:mostSpecificType ?subclass
                     </collated>
                 }
-            OPTIONAL { ?happt bprofile:hasHospitalAppointmentWith ?emp .
+            OPTIONAL { ?happt bprofile:hasHospitalAppointmentOrganization ?emp .
                         ?emp rdfs:label ?empText }
             OPTIONAL { ?happt bprofile:startDate ?start }
             OPTIONAL { ?happt bprofile:endDate ?end }
@@ -44,7 +44,7 @@
             ?subject ?property ?happt .
             ?happt rdfs:label ?happtText .
             ?happt vitro:mostSpecificType ?subclass .
-            ?happt bprofile:hasHospitalAppointmentWith ?emp .
+            ?happt bprofile:hasHospitalAppointmentOrganization ?emp .
             ?emp rdfs:label ?empText .
             ?happt bprofile:startDate ?start .
             ?happt bprofile:endDate ?end .
@@ -60,7 +60,7 @@
             }
             UNION {
                 ?subject ?property ?happt .
-                ?happt bprofile:hasHospitalAppointmentWith ?emp .
+                ?happt bprofile:hasHospitalAppointmentOrganization ?emp .
                 ?emp rdfs:label ?empText .         
             }
             UNION {
